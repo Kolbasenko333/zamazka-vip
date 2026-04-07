@@ -3,62 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Замазка _ViP — Покерный клуб</title>
+    <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #080808; color: white; text-align: center; margin: 0; padding: 0; }
-        .hero { padding: 80px 20px; background: radial-gradient(circle, #1a1a1a 0%, #080808 100%); border-bottom: 1px solid #333; }
-        h1 { color: #ffcc00; font-size: 3em; margin: 0; text-shadow: 0 0 20px rgba(255,204,0,0.2); }
-        .promo { font-size: 1.2em; color: #aaa; margin: 20px 0 40px; }
-        
-        .btn { 
-            background: linear-gradient(90deg, #0088cc, #00aaff); 
-            color: white; padding: 22px 45px; 
-            text-decoration: none; font-weight: bold; 
-            border-radius: 12px; font-size: 1.3em; 
-            display: inline-block; transition: 0.3s;
-            box-shadow: 0 10px 25px rgba(0,136,204,0.4);
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; text-align: center; }
+        header { padding: 20px; background: #0c0d0c; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        .hero { padding: 80px 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); }
+        p { color: #888; max-width: 600px; margin: 20px auto; font-size: 1.1em; }
+        .hero-btn { 
+            display: inline-block; background: #ccff00; color: #000; 
+            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; text-transform: uppercase; transition: 0.3s;
+            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
         }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,136,204,0.6); }
-
-        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 50px 20px; max-width: 1200px; margin: 0 auto; }
-        
-        .card { 
-            background: #111; border: 1px solid #222; 
-            padding: 15px; border-radius: 20px; width: 320px; 
-            transition: 0.4s; 
-        }
-        .card:hover { border-color: #ffcc00; transform: scale(1.03); }
-        .card img, .card video { width: 100%; border-radius: 15px; margin-bottom: 15px; }
-        .card p { margin: 0; color: #00ff00; font-weight: bold; font-size: 1.1em; }
-        
-        .footer { padding: 40px; color: #555; font-size: 0.9em; }
+        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
+        .hero-img { width: 100%; max-width: 600px; margin-top: 40px; border-radius: 20px; }
     </style>
 </head>
 <body>
-
-<div class="hero">
-    <h1>ЗАМАЗКА _ViP</h1>
-    <p class="promo">💎 50% РЕЙКБЕК | МОМЕНТАЛЬНЫЙ ВЫВОД | СИСТЕМА ЗАЩИТЫ</p>
-    <a href="https://t.me/zamazka_vip_bot" class="btn">🚀 ИГРАТЬ В TELEGRAM</a>
-</div>
-
-<div class="gallery">
-    <div class="card">
-        <video controls>
-            <source src="gameplay.mp4" type="video/mp4">
-        </video>
-        <p>📈 Раздача дня</p>
-    </div>
-
-    <div class="card">
-        <img src="win1.jpg" alt="Выплата">
-        <p>✅ Выплата игроку: +64,000 ₽</p>
-    </div>
-</div>
-
-<div class="footer">
-    Официальный клуб союза СНГ. По всем вопросам: @olegvys
-</div>
-
+    <header><div class="logo">ЗАМАЗКА _ViP</div></header>
+    <section class="hero">
+        <span style="color: #666; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em;">Крупнейший союз СНГ</span>
+        <h1 style="margin-top: 10px;">50% РЕЙКБЕК</h1>
+        <p>Моментальные депозиты и быстрые выплаты под защитой службы безопасности союза.</p>
+        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        <br>
+        <img src="hero_cards.png" alt="Poker Cards" class="hero-img">
+    </section>
 </body>
 </html>
