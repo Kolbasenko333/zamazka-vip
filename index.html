@@ -5,58 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; text-align: center; }
-        header { padding: 20px; background: #0c0d0c; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000; color: #fff; margin: 0; overflow: hidden; text-align: center; }
+        header { padding: 20px; background: #0c0d0c; border-bottom: 1px solid #1a1a1a; }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
-        .hero { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; }
-        h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); }
-        p { color: #fff; max-width: 600px; margin: 20px auto; font-size: 1.1em; font-weight: 500; letter-spacing: 1px; line-height: 1.5; }
+        .hero { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
+        h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; }
+        p { color: #fff; margin: 20px auto; font-size: 1.1em; font-weight: 500; }
         
         .hero-btn { 
             display: inline-block; background: #ccff00; color: #000; 
             padding: 18px 45px; border-radius: 50px; text-decoration: none; 
             font-weight: bold; text-transform: uppercase; transition: 0.3s;
             box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
-            margin-bottom: 30px;
-            position: relative; z-index: 10;
+            margin-bottom: 20px;
         }
-        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        .card-container { perspective: 1500px; width: 100%; max-width: 550px; margin-top: 10px; }
-        
+        /* Контейнер для парящей карты */
+        .card-wrapper {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .hero-img { 
-            width: 100%; 
-            border: none;
-            
-            /* МАГИЯ ТУТ: этот режим на 100% убирает черный фон и рамки, оставляя только свет */
-            mix-blend-mode: screen; 
-            
-            /* Мягкое неоновое свечение */
-            filter: drop-shadow(0 0 40px rgba(204, 255, 0, 0.6));
-            
-            animation: floatCard 6s ease-in-out infinite; 
+            width: 100%;
+            height: auto;
+            /* Пытаемся скрыть края самой картинки */
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.5));
+            animation: float3D 6s ease-in-out infinite;
             transform-style: preserve-3d;
-            
-            /* Важно для mix-blend-mode: убирает глюки на мобильных */
-            will-change: transform;
         }
 
-        @keyframes floatCard {
-            0% { transform: rotateY(-20deg) rotateX(10deg) translateY(0px); }
-            50% { transform: rotateY(20deg) rotateX(-10deg) translateY(-25px); }
-            100% { transform: rotateY(-20deg) rotateX(10deg) translateY(0px); }
+        @keyframes float3D {
+            0% { transform: perspective(1000px) rotateY(-25deg) rotateX(10deg); }
+            50% { transform: perspective(1000px) rotateY(25deg) rotateX(-10deg) translateY(-20px); }
+            100% { transform: perspective(1000px) rotateY(-25deg) rotateX(10deg); }
         }
     </style>
 </head>
 <body>
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
     <section class="hero">
-        <span style="color: #666; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em;">Крупнейший союз СНГ</span>
         <h1 style="margin-top: 10px;">50% <br> РЕЙКБЕК</h1>
-        <p>Самые быстрые выплаты • Моментальные депозиты • Честная игра</p>
+        <p>Быстрые выплаты • Моментальные депозиты • Честная игра</p>
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        <div class="card-container">
+        <div class="card-wrapper">
             <img src="hero_cards.png" alt="Poker Cards" class="hero-img">
         </div>
     </section>
