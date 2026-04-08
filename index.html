@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
-    <style>
+    <style>/* Анимация плавного вращения */
+        @keyframes rotateCard {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
         body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; text-align: center; }
         header { padding: 20px; background: #0c0d0c; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
         .hero { padding: 80px 20px; display: flex; flex-direction: column; align-items: center; }
         h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); }
         p { color: #888; max-width: 600px; margin: 20px auto; font-size: 1.1em; }
-        .hero-btn { 
+        .hero-btn {
+            width: 100%; 
+            max-width: 600px; 
+            margin-top: 40px; 
+            border-radius: 20px; 
+            /* Добавляем вращение: имя анимации, время (15с), бесконечно, плавно */
+            animation: rotateCard 15s linear infinite; 
+            /* Эффект 3D перспективы для вращения */
+            transform-style: preserve-3d;
+        }
             display: inline-block; background: #ccff00; color: #000; 
             padding: 18px 45px; border-radius: 50px; text-decoration: none; 
             font-weight: bold; text-transform: uppercase; transition: 0.3s;
