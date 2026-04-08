@@ -5,106 +5,89 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        body { 
-            margin: 0; padding: 0; background-color: #000; color: #fff; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center; overflow-x: hidden; 
-        }
+        body { margin: 0; padding: 0; background-color: #000; color: #fff; font-family: sans-serif; text-align: center; }
 
-        /* 1. СТАТИЧНЫЙ ДЫМ В САМОМ НИЗУ (без квадратов) */
-        .smoke-layer {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2;
-            background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat fixed;
-            opacity: 0.8;
-        }
-
-        /* 2. АНИМИРОВАННЫЕ ФИШКИ ПОВЕРХ ДЫМА */
-        .chips-layer {
+        /* 1. ФОН: ОБЪЕДИНЯЕМ ДЫМ И ТВОИ ФИШКИ (Без изменений) */
+        .main-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: url('ФИШКИ .png') repeat;
-            background-size: 320px; 
-            opacity: 0.2;
-            mix-blend-mode: screen;
-            animation: chipsRain 35s linear infinite;
+            background: url('ФИШКИ .png') center/cover no-repeat, url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
+            mix-blend-mode: screen; 
+            opacity: 0.6; 
         }
 
-        @keyframes chipsRain {
-            from { background-position: 0 0; }
-            to { background-position: 0 1000px; }
-        }
+        .content { position: relative; z-index: 10; padding: 60px 20px; }
+        
+        /* 2. ШАПКА: СДЕЛАЛИ ЯРЧЕ */
+        .logo-header { color: #ccff00; font-size: 1.5em; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 15px rgba(204, 255, 0, 0.7); }
 
-        header { padding: 25px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
-
-        .hero { padding: 40px 20px; position: relative; z-index: 10; }
-
-        /* ТВОЙ ЛЮБИМЫЙ 3D ЗАГОЛОВОК (Лимонный) */
+        /* 3. ЗАГОЛОВОК: БЫЛ ЖЕЛТЫМ, СТАЛ ГРАДИЕНТНЫМ (МЕНЯЕТ ЦВЕТ) */
         h1 { 
-            font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
+            font-size: 4.5em; margin: 10px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
-            color: #ccff00;
-            text-shadow: 
-                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
+            /* !!! МАГИЯ ГРАДИЕНТА !!! */
+            background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
+            background-size: 200% auto;
+            -webkit-background-clip: text; /* Отрезает фон по форме букв */
+            -webkit-text-fill-color: transparent; /* Делает сам текст прозрачным */
+            
+            /* Яркое неоновое свечение */
+            text-shadow: 0 0 25px rgba(204, 255, 0, 0.5);
+            /* Запускает перелив заголовка */
+            animation: hueMove 4s linear infinite;
         }
 
-        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; }
-        .features { color: #eee; font-size: 1em; margin-bottom: 30px; opacity: 0.9; }
+        .features { color: #aaa; font-size: 1em; margin-bottom: 20px; letter-spacing: 1px; }
 
-        /* КНОПКА С ТВОИМ ГРАДИЕНТОМ */
+        /* 4. КНОПКА (ПЕРЕЛИВАЮЩАЯСЯ) */
         .hero-btn { 
             display: inline-block; 
-            background: linear-gradient(90deg, #00FF7F, #00fac4, #00FF7F);
+            /* !!! МАГИЯ ГРАДИЕНТА ДЛЯ КНОПКИ !!! */
+            background: linear-gradient(90deg, #ccff00, #00FF7F, #00fac4, #ccff00);
             background-size: 200% auto;
             color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(0, 255, 127, 0.4);
-            animation: btnShift 4s linear infinite;
+            font-weight: bold; text-transform: uppercase; transition: 0.3s;
+            /* Мощное неоновое свечение кнопки */
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.7);
+            margin-bottom: 40px;
+            /* Запускает перелив кнопки */
+            animation: hueMove 4s linear infinite;
+        }
+        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(204, 255, 0, 0.9); }
+
+        /* 5. КАРТА (АТМОСФЕРНАЯ) */
+        .card-img { 
+            width: 80%; max-width: 450px; mix-blend-mode: screen; 
+            /* Сделали ярче и увеличили свечение */
+            filter: contrast(0.9) brightness(1.1) drop-shadow(0 0 30px rgba(204, 255, 0, 0.3));
         }
 
-        @keyframes btnShift {
+        /* ОПИСАНИЕ АНИМАЦИИ: Двигаем градиент слева направо */
+        @keyframes hueMove {
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
-
-        /* КАРТА: ПРОЗРАЧНАЯ И БЕЗ ЧЕРНОЙ РАМКИ */
-        .card-img { 
-            width: 80%; max-width: 400px; margin-top: 25px;
-            mix-blend-mode: screen; 
-            opacity: 0.65;
-            filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.3));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-
-        .rb-text { color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.2em; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="smoke-layer"></div>
-    <div class="chips-layer"></div>
-
-    <header><div class="logo">ЗАМАЗКА _ViP</div></header>
-
-    <section class="hero">
-        <div style="text-transform: uppercase; letter-spacing: 5px; font-size: 0.85em; margin-bottom: 10px; opacity: 0.8;">Крупнейший союз СНГ</div>
+    <div class="main-bg"></div>
+    <div class="content">
+        <div class="logo-header">ЗАМАЗКА _ViP</div>
+        
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p class="sub-text">Начинается здесь</p>
+        
+        <p style="color: #fff; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px;">Начинается здесь</p>
         <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
         <div>
-            <img src="card_only.png" class="card-img">
+            <img src="hero_cards.png" class="card-img">
         </div>
         
-        <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
+        <p style="color: #ccff00; font-weight: bold; margin-top: 30px; letter-spacing: 1px;">
+            + 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ
+        </p>
     </section>
 </body>
 </html>
