@@ -5,32 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        /* 1. БАЗОВЫЕ НАСТРОЙКИ */
-        * { box-sizing: border-box; }
         body { 
             margin: 0; padding: 0; background-color: #000; color: #fff; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center; overflow-x: hidden; min-height: 100vh;
+            text-align: center; overflow-x: hidden; 
         }
 
-        /* 2. ФИКСИРОВАННЫЙ МОНОЛИТНЫЙ ФОН (Дым без швов) */
-        .viewport-bg {
+        /* Убираем квадраты: растягиваем фон намертво */
+        .smoke-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
-            background: url('green-smoke-spread-black-background.jpg') no-repeat center center;
-            background-size: cover; /* Растягивает на весь экран */
+            /* Добавили ?v=1, чтобы сбросить кэш */
+            background: url('green-smoke-spread-black-background.jpg?v=1') center/cover no-repeat fixed;
             opacity: 0.8;
         }
 
-        /* 3. СЛОЙ ПАДАЮЩИХ ФИШЕК */
-        .chips-rain {
+        /* Фишки: теперь точно падают мелко */
+        .falling-chips {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: url('ФИШКИ .png') repeat;
-            background-size: 300px; 
+            background: url('ФИШКИ .png?v=1') repeat;
+            background-size: 320px; 
             opacity: 0.15;
-            mix-blend-mode: screen; /* Растворяет черный фон фишек */
-            animation: chipsFall 40s linear infinite;
+            mix-blend-mode: screen;
+            animation: chipsFall 35s linear infinite;
         }
 
         @keyframes chipsFall {
@@ -38,31 +36,30 @@
             to { background-position: 0 1000px; }
         }
 
-        /* 4. ШАПКА */
-        header { padding: 25px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
+        header { padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
         .logo { font-size: 1.4em; font-weight: bold; color: #fff; letter-spacing: 5px; text-transform: uppercase; }
 
         .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* 5. ПРЕМИАЛЬНЫЙ ТЕКСТ (Изумрудный) */
+        /* Изумрудный премиум цвет */
         h1 { 
             font-size: 4.5em; margin: 15px 0; line-height: 1; 
             text-transform: uppercase; font-weight: 900;
-            color: #00FF7F; 
-            text-shadow: 0 0 25px rgba(0, 255, 127, 0.5), 0 5px 15px rgba(0,0,0,0.8);
+            color: #00FF7F !important; /* !important принудительно ставит цвет */
+            text-shadow: 0 0 25px rgba(0, 255, 127, 0.6), 0 5px 15px rgba(0,0,0,0.8);
         }
 
         .sub-text { font-size: 1.3em; font-weight: bold; letter-spacing: 5px; margin-bottom: 5px; }
-        .features { color: #eee; font-size: 1em; margin-bottom: 35px; opacity: 0.9; }
+        .features { color: #eee; font-size: 1em; margin-bottom: 35px; }
 
-        /* 6. КНОПКА */
+        /* Кнопка с переливом */
         .hero-btn { 
             display: inline-block; 
             background: linear-gradient(90deg, #00FF7F, #00fac4, #00FF7F);
             background-size: 200% auto;
             color: #000; padding: 18px 45px; border-radius: 50px; 
             text-decoration: none; font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(0, 255, 127, 0.4);
+            box-shadow: 0 0 30px rgba(0, 255, 127, 0.5);
             animation: btnShift 4s linear infinite;
         }
 
@@ -71,28 +68,26 @@
             100% { background-position: 200% center; }
         }
 
-        /* 7. КАРТА (ИСПРАВЛЕНИЕ ЧЕРНЫХ КВАДРАТОВ) */
-        .card-container { margin-top: 30px; display: flex; justify-content: center; }
+        /* Карта: максимально прозрачная и без черных боксов */
         .card-img { 
-            width: 75%; max-width: 380px;
-            display: block;
-            mix-blend-mode: screen; /* УБИРАЕТ ЧЕРНЫЙ ФОН КАРТИНКИ */
+            width: 75%; max-width: 380px; margin-top: 30px;
+            mix-blend-mode: screen !important; 
             opacity: 0.6;
-            filter: drop-shadow(0 0 20px rgba(0, 255, 127, 0.3));
+            filter: drop-shadow(0 0 25px rgba(0, 255, 127, 0.3));
             animation: cardFloat 6s ease-in-out infinite;
         }
 
         @keyframes cardFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
 
         .rb-text { color: #00FF7F; font-weight: bold; margin-top: 40px; font-size: 1.1em; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="viewport-bg"></div>
-    <div class="chips-rain"></div>
+    <div class="smoke-bg"></div>
+    <div class="falling-chips"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
@@ -104,8 +99,8 @@
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        <div class="card-container">
-            <img src="card_only.png" class="card-img">
+        <div>
+            <img src="card_only.png?v=1" class="card-img">
         </div>
         
         <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
