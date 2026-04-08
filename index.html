@@ -3,90 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP | Официальный клуб</title>
+    <title>VIP | Добро пожаловать в мир покера</title>
     <style>
         :root { --main-color: #ccff00; --bg-dark: #050505; }
         
         body { 
             margin: 0; padding: 0; background: var(--bg-dark); color: #fff; 
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; 
-            overflow-x: hidden; 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            text-align: center; overflow-x: hidden; 
         }
 
-        /* ХЕДЕР В СТИЛЕ POKERSTARS */
+        /* ШАПКА */
         header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 40px; background: rgba(0,0,0,0.8);
             backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 100;
+            box-sizing: border-box;
             border-bottom: 1px solid rgba(204, 255, 0, 0.1);
         }
 
-        .nav-links a { color: #fff; text-decoration: none; margin-right: 20px; font-weight: 500; font-size: 0.9em; opacity: 0.7; transition: 0.3s; }
-        .nav-links a:hover { opacity: 1; color: var(--main-color); }
+        .logo { font-size: 1.5em; font-weight: 900; color: var(--main-color); letter-spacing: 5px; }
 
-        .auth-btns .login { color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold; }
-        .auth-btns .reg-btn { 
-            background: var(--main-color); color: #000; padding: 10px 25px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold;
-            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        /* ФОНОВЫЕ СЛОИ (ФИШКИ И ДЫМ) */
+        .chips-bg {
+            position: fixed; inset: 0; z-index: -2;
+            background: url('ФИШКИ .png') center/cover no-repeat;
+            opacity: 0.4;
         }
 
-        /* ФОНОВЫЕ СЛОИ */
         .smoke-bg {
             position: fixed; inset: 0; z-index: -1;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
-            opacity: 0.6; filter: hue-rotate(10deg);
+            mix-blend-mode: screen; opacity: 0.8;
+            animation: smokePulse 20s ease-in-out infinite;
         }
 
-        /* ГЛАВНЫЙ БЛОК */
-        .hero {
-            height: 100vh; display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; position: relative;
+        @keyframes smokePulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.9; }
         }
+
+        /* ГЛАВНЫЙ ЭКРАН */
+        .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; z-index: 10; }
 
         h1 { 
-            font-size: 5em; text-transform: uppercase; font-weight: 900; 
-            margin: 0; line-height: 0.85; color: var(--main-color);
-            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            font-size: 4.5em; text-transform: uppercase; font-weight: 900; 
+            margin: 15px 0; line-height: 0.95; color: var(--main-color);
+            text-shadow: 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 0 10px 25px rgba(0,0,0,0.9);
         }
 
-        /* СЕКЦИЯ ПРЕДЛОЖЕНИЙ (КАК НА СКРИНЕ) */
+        .hero-btn { 
+            display: inline-block; background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
+            background-size: 200% auto; color: #000; padding: 18px 50px; border-radius: 50px; 
+            text-decoration: none; font-weight: bold; text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.6); animation: moveGradient 4s linear infinite;
+        }
+
+        @keyframes moveGradient { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+
+        /* НИЖНЯЯ СЕКЦИЯ С КАРТОЧКАМИ */
         .promo-section {
-            background: #fff; color: #000; padding: 60px 20px;
+            background: #fff; color: #000; padding: 80px 20px;
             text-align: center; border-radius: 40px 40px 0 0;
+            margin-top: -50px; position: relative; z-index: 20;
         }
 
-        .promo-title { font-size: 2em; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
+        .promo-grid {
+            display: flex; justify-content: center; gap: 20px;
+            max-width: 1200px; margin: 40px auto 0; flex-wrap: wrap;
+        }
+
+        .promo-card {
+            background: #fdfdfd; padding: 30px; border-radius: 20px;
+            width: 280px; border: 1px solid #eee; transition: 0.3s;
+        }
+
+        .promo-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .promo-icon { font-size: 3em; margin-bottom: 10px; }
+        .promo-card h3 { font-weight: 900; text-transform: uppercase; margin: 10px 0; }
+        .promo-card p { color: #666; font-size: 0.9em; }
+
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo" style="color: var(--main-color); font-weight: 900; letter-spacing: 2px;">VIP</div>
-    <nav class="nav-links">
-        <a href="#">ГЛАВНАЯ</a>
-        <a href="#">КЭШ-ИГРЫ</a>
-        <a href="#">ТУРНИРЫ</a>
-        <a href="#">АКЦИИ</a>
-    </nav>
+    <div class="logo">VIP</div>
     <div class="auth-btns">
-        <a href="#" class="login">ВХОД</a>
-        <a href="#" class="reg-btn">РЕГИСТРАЦИЯ</a>
+        <a href="#" style="color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold;">ВХОД</a>
+        <a href="#" class="hero-btn" style="padding: 10px 25px; font-size: 0.8em;">РЕГИСТРАЦИЯ</a>
     </div>
 </header>
 
+<div class="chips-bg"></div>
 <div class="smoke-bg"></div>
 
 <section class="hero">
-    <div style="letter-spacing: 8px; font-size: 0.9em; margin-bottom: 10px;">ДОБРО ПОЖАЛОВАТЬ В</div>
-    <h1>VIP <br> POKER</h1>
-    <a href="https://t.me/zamazka_vip_bot" style="margin-top: 40px;" class="reg-btn">ИГРАТЬ В TELEGRAM</a>
-</section>
-
-<section class="promo-section">
-    <div class="promo-title">Предложения для новых игроков</div>
-    <p>После регистрации воспользуйтесь одним из наших бонусов за первый депозит!</p>
-    </section>
-
-</body>
-</html>
+    <div style="letter-spacing: 6px; font-size: 0.9em; opacity: 0.8;">ДОБРО ПОЖАЛОВАТЬ В</div>
+    <h1>МИР <br> ПОКЕРА</h1>
+    <p style="font-size: 1.2em; font-weight: bold; letter-spacing: 2px; margin-bottom: 30px;">ТВОЙ ПУТЬ К ПОБЕДЕ НАЧИНАЕТСЯ ЗДЕСЬ</p>
