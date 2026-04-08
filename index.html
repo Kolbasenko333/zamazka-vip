@@ -22,13 +22,15 @@
         }
         .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        .card-container { perspective: 1200px; width: 100%; max-width: 500px; margin-top: 10px; }
+        .card-container { perspective: 1200px; width: 100%; max-width: 550px; margin-top: 10px; overflow: visible; }
         
         .hero-img { 
             width: 100%; 
-            /* МАГИЯ ТУТ: этот режим убирает черный фон с картинки */
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
+            /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: Маска, которая плавно стирает края картинки */
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 95%);
+            mask-image: radial-gradient(circle, black 50%, transparent 95%);
+            
+            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.5));
             animation: floatCard 6s ease-in-out infinite; 
             transform-style: preserve-3d;
         }
