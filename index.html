@@ -26,27 +26,26 @@
             perspective: 2000px;
         }
 
-        /* ТОТ САМЫЙ ТУМАН - СОЗДАЕМ КОДОМ */
+        /* СОЗДАЕМ ТУМАН КОДОМ */
         .fog-effect {
-            position: absolute; width: 80%; height: 80%;
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
-            filter: blur(60px); z-index: 1;
+            position: absolute; width: 85%; height: 85%;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.25) 0%, rgba(0, 0, 0, 0) 75%);
+            filter: blur(55px); z-index: 1;
         }
 
         .card-actor {
-            width: 100%; 
-            max-width: 550px; /* УВЕЛИЧЕННЫЙ РАЗМЕР */
+            width: 100%; max-width: 580px; /* СДЕЛАЛ ЕЩЕ БОЛЬШЕ */
             z-index: 2;
-            mix-blend-mode: screen; /* УБИРАЕТ ЧЕРНЫЙ ФОН КАРТИНКИ */
-            filter: drop-shadow(0 0 40px rgba(204, 255, 0, 0.4));
-            animation: move3D 8s ease-in-out infinite;
+            mix-blend-mode: screen; /* УДАЛЯЕТ ЧЕРНЫЙ ЦВЕТ ИЗ КАРТИНКИ */
+            filter: drop-shadow(0 0 35px rgba(204, 255, 0, 0.4));
+            animation: move3D 7s ease-in-out infinite;
             transform-style: preserve-3d;
         }
 
         @keyframes move3D {
-            0% { transform: rotateY(-20deg) rotateX(10deg); }
-            50% { transform: rotateY(20deg) rotateX(-10deg) translateY(-20px); }
-            100% { transform: rotateY(-20deg) rotateX(10deg); }
+            0% { transform: rotateY(-22deg) rotateX(12deg); }
+            50% { transform: rotateY(22deg) rotateX(-12deg) translateY(-25px); }
+            100% { transform: rotateY(-22deg) rotateX(12deg); }
         }
     </style>
 </head>
@@ -59,7 +58,7 @@
         
         <div class="card-scene">
             <div class="fog-effect"></div>
-            <img src="hero_cards.png?v=super-final" alt="Poker Card" class="card-actor">
+            <img src="hero_cards.png?v=999" alt="Poker Card" class="card-actor">
         </div>
     </section>
 </body>
