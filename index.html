@@ -3,110 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIP | Покерный Клуб</title>
+    <title>VIP | Официальный клуб</title>
     <style>
+        :root { --main-color: #ccff00; --bg-dark: #050505; }
+        
         body { 
-            margin: 0; padding: 0; background-color: #000; color: #fff; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center; overflow-x: hidden; 
+            margin: 0; padding: 0; background: var(--bg-dark); color: #fff; 
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; 
+            overflow-x: hidden; 
         }
 
-        /* 1. СЛОЙ С ФИШКАМИ (НИЖНИЙ) */
-        .chips-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('ФИШКИ .png') center/cover no-repeat;
-            z-index: -2;
-            opacity: 0.5;
+        /* ХЕДЕР В СТИЛЕ POKERSTARS */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 40px; background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(15px); position: fixed; width: 100%; top: 0; z-index: 100;
+            border-bottom: 1px solid rgba(204, 255, 0, 0.1);
         }
 
-        /* 2. СЛОЙ С ДЫМОМ (АНИМАЦИЯ ПОД ТЕКСТОМ) */
+        .nav-links a { color: #fff; text-decoration: none; margin-right: 20px; font-weight: 500; font-size: 0.9em; opacity: 0.7; transition: 0.3s; }
+        .nav-links a:hover { opacity: 1; color: var(--main-color); }
+
+        .auth-btns .login { color: #fff; text-decoration: none; margin-right: 20px; font-weight: bold; }
+        .auth-btns .reg-btn { 
+            background: var(--main-color); color: #000; padding: 10px 25px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+        }
+
+        /* ФОНОВЫЕ СЛОИ */
         .smoke-bg {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; inset: 0; z-index: -1;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
-            z-index: -1;
-            mix-blend-mode: screen; 
-            opacity: 0.8;
-            animation: smokePulse 20s ease-in-out infinite;
+            opacity: 0.6; filter: hue-rotate(10deg);
         }
 
-        @keyframes smokePulse {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 0.9; }
+        /* ГЛАВНЫЙ БЛОК */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; position: relative;
         }
 
-        header { padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; }
-
-        .hero { padding: 40px 20px; position: relative; z-index: 10; }
-
-        /* ИСПРАВЛЕННЫЙ 3D ЗАГОЛОВОК С ПЕРЕНОСОМ */
         h1 { 
-            font-size: 4.2em; margin: 10px 0; line-height: 0.95; 
-            text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
-            color: #ccff00;
-            /* Убрали жесткое ограничение ширины, чтобы Safari не обрезал тень */
-            text-shadow: 
-                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
+            font-size: 5em; text-transform: uppercase; font-weight: 900; 
+            margin: 0; line-height: 0.85; color: var(--main-color);
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
         }
 
-        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; }
-        .features { color: #ffffff; font-size: 1.1em; margin-bottom: 30px; letter-spacing: 1px; }
-
-        .hero-btn { 
-            display: inline-block; 
-            background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
-            background-size: 200% auto;
-            color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
-            animation: moveGradient 4s linear infinite;
+        /* СЕКЦИЯ ПРЕДЛОЖЕНИЙ (КАК НА СКРИНЕ) */
+        .promo-section {
+            background: #fff; color: #000; padding: 60px 20px;
+            text-align: center; border-radius: 40px 40px 0 0;
         }
 
-        @keyframes moveGradient {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .card-img { 
-            width: 85%; max-width: 420px; margin-top: 20px;
-            mix-blend-mode: screen;
-            filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.5));
-            animation: floatCard 6s ease-in-out infinite;
-        }
-
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
-        }
-
-        .rb-text { 
-            color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.3em; 
-            text-transform: uppercase;
-        }
+        .promo-title { font-size: 2em; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; }
     </style>
 </head>
 <body>
-    <div class="chips-bg"></div>
-    <div class="smoke-bg"></div>
 
-    <header><div class="logo">VIP</div></header>
+<header>
+    <div class="logo" style="color: var(--main-color); font-weight: 900; letter-spacing: 2px;">VIP</div>
+    <nav class="nav-links">
+        <a href="#">ГЛАВНАЯ</a>
+        <a href="#">КЭШ-ИГРЫ</a>
+        <a href="#">ТУРНИРЫ</a>
+        <a href="#">АКЦИИ</a>
+    </nav>
+    <div class="auth-btns">
+        <a href="#" class="login">ВХОД</a>
+        <a href="#" class="reg-btn">РЕГИСТРАЦИЯ</a>
+    </div>
+</header>
 
-    <section class="hero">
-        <div style="color: #fff; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8em; margin-bottom: 5px; opacity: 0.8;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
-        
-        <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        
-        <p class="sub-text">НАЧИНАЕТСЯ ЗДЕСЬ</p>
-        <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
-        
-        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
-        
-        <div>
-            <img src="card_only.png" class="card-img">
-        </div>
-        
-        <p class="rb-text">САМЫЙ БОЛЬШОЙ РЕЙКБЕК В СОЮЗЕ</p>
+<div class="smoke-bg"></div>
+
+<section class="hero">
+    <div style="letter-spacing: 8px; font-size: 0.9em; margin-bottom: 10px;">ДОБРО ПОЖАЛОВАТЬ В</div>
+    <h1>VIP <br> POKER</h1>
+    <a href="https://t.me/zamazka_vip_bot" style="margin-top: 40px;" class="reg-btn">ИГРАТЬ В TELEGRAM</a>
+</section>
+
+<section class="promo-section">
+    <div class="promo-title">Предложения для новых игроков</div>
+    <p>После регистрации воспользуйтесь одним из наших бонусов за первый депозит!</p>
     </section>
+
 </body>
 </html>
