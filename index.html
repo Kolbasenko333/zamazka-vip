@@ -11,7 +11,7 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. СЛОЙ С ФИШКАМИ (В самом низу) */
+        /* 1. СЛОЙ С ФИШКАМИ (НИЖНИЙ) */
         .chips-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('ФИШКИ .png') center/cover no-repeat;
@@ -19,7 +19,7 @@
             opacity: 0.5;
         }
 
-        /* 2. СЛОЙ С ДЫМОМ (ПОВЕРХ ФИШЕК + АНИМАЦИЯ) */
+        /* 2. СЛОЙ С ДЫМОМ (АНИМАЦИЯ ПОД ТЕКСТОМ) */
         .smoke-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
@@ -35,15 +35,16 @@
         }
 
         header { padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; text-shadow: 0 0 15px rgba(204,255,0,0.6); }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; }
 
         .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ТВОЙ МОЩНЫЙ 3D ЗАГОЛОВОК */
+        /* ИСПРАВЛЕННЫЙ 3D ЗАГОЛОВОК С ПЕРЕНОСОМ */
         h1 { 
-            font-size: 4.2em; margin: 10px 0; line-height: 0.9; 
+            font-size: 4.2em; margin: 10px 0; line-height: 0.95; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             color: #ccff00;
+            /* Убрали жесткое ограничение ширины, чтобы Safari не обрезал тень */
             text-shadow: 
                 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
                 0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
@@ -82,7 +83,6 @@
         .rb-text { 
             color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.3em; 
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(204,255,0,0.6);
         }
     </style>
 </head>
@@ -94,4 +94,19 @@
 
     <section class="hero">
         <div style="color: #fff; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8em; margin-bottom: 5px; opacity: 0.8;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
-        <h1>ТВОЙ ПУТЬ <br> К ПО
+        
+        <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
+        
+        <p class="sub-text">НАЧИНАЕТСЯ ЗДЕСЬ</p>
+        <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
+        
+        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        
+        <div>
+            <img src="card_only.png" class="card-img">
+        </div>
+        
+        <p class="rb-text">САМЫЙ БОЛЬШОЙ РЕЙКБЕК В СОЮЗЕ</p>
+    </section>
+</body>
+</html>
