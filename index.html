@@ -11,36 +11,20 @@
         .hero { padding: 40px 20px; display: flex; flex-direction: column; align-items: center; }
         h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; }
         p { color: #fff; margin: 20px auto; font-size: 1.1em; font-weight: 500; }
-        
         .hero-btn { 
             display: inline-block; background: #ccff00; color: #000; 
             padding: 18px 45px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase; transition: 0.3s;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
-            margin-bottom: 20px;
+            font-weight: bold; text-transform: uppercase; box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
         }
-
         .card-scene {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            height: 350px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1200px;
+            position: relative; width: 100%; max-width: 500px; height: 350px;
+            display: flex; justify-content: center; align-items: center; perspective: 1200px;
         }
-
         .card-actor {
-            width: 90%;
-            max-width: 350px;
-            /* mix-blend-mode: screen уберет черный фон, если ты используешь старую картинку */
-            mix-blend-mode: screen; 
+            width: 90%; max-width: 350px; mix-blend-mode: screen; 
             filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
-            animation: move3D 6s ease-in-out infinite;
-            transform-style: preserve-3d;
+            animation: move3D 6s ease-in-out infinite; transform-style: preserve-3d;
         }
-
         @keyframes move3D {
             0% { transform: rotateY(-15deg) rotateX(10deg) translateY(0); }
             50% { transform: rotateY(15deg) rotateX(-10deg) translateY(-20px); }
@@ -54,7 +38,6 @@
         <h1>50% <br> РЕЙКБЕК</h1>
         <p>Быстрые выплаты • Депозиты 24/7 • Честная игра</p>
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
-        
         <div class="card-scene">
             <img src="card_only.png" onerror="this.src='hero_cards.png'" alt="Poker Card" class="card-actor">
         </div>
