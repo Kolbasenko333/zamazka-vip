@@ -22,23 +22,29 @@
         }
         .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        .card-container { perspective: 1200px; width: 100%; max-width: 550px; margin-top: 10px; overflow: visible; }
+        .card-container { perspective: 1500px; width: 100%; max-width: 550px; margin-top: 10px; }
         
         .hero-img { 
             width: 100%; 
-            /* ГЛАВНОЕ ИСПРАВЛЕНИЕ: Маска, которая плавно стирает края картинки */
-            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 95%);
-            mask-image: radial-gradient(circle, black 50%, transparent 95%);
+            border: none;
             
-            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.5));
+            /* МАГИЯ ТУТ: этот режим на 100% убирает черный фон и рамки, оставляя только свет */
+            mix-blend-mode: screen; 
+            
+            /* Мягкое неоновое свечение */
+            filter: drop-shadow(0 0 40px rgba(204, 255, 0, 0.6));
+            
             animation: floatCard 6s ease-in-out infinite; 
             transform-style: preserve-3d;
+            
+            /* Важно для mix-blend-mode: убирает глюки на мобильных */
+            will-change: transform;
         }
 
         @keyframes floatCard {
-            0% { transform: rotateY(-15deg) rotateX(5deg) translateY(0px); }
-            50% { transform: rotateY(15deg) rotateX(-5deg) translateY(-25px); }
-            100% { transform: rotateY(-15deg) rotateX(5deg) translateY(0px); }
+            0% { transform: rotateY(-20deg) rotateX(10deg) translateY(0px); }
+            50% { transform: rotateY(20deg) rotateX(-10deg) translateY(-25px); }
+            100% { transform: rotateY(-20deg) rotateX(10deg) translateY(0px); }
         }
     </style>
 </head>
