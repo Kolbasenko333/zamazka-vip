@@ -7,89 +7,60 @@
     <style>
         body { 
             margin: 0; padding: 0; background-color: #000; color: #fff; 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center; overflow-x: hidden; 
+            font-family: Arial, sans-serif; text-align: center; overflow-x: hidden; 
         }
 
-        /* ЕДИНЫЙ КОНТЕЙНЕР ДЛЯ ФОНА */
-        .bg-container {
+        /* 1. СЛОЙ ДЫМА (САМЫЙ НИЖНИЙ) */
+        .layer-smoke {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        /* ДЫМ (САМЫЙ НИЖНИЙ) */
-        .smoke-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
-            z-index: 1;
+            z-index: -10; /* Улетает максимально назад */
         }
 
-        /* ФИШКИ (ПОВЕРХ ДЫМА) */
-        .chips-layer {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        /* 2. СЛОЙ ФИШЕК (ПЕРЕД ДЫМОМ) */
+        .layer-chips {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: url('ФИШКИ .png') repeat;
             background-size: 350px;
-            z-index: 2;
-            mix-blend-mode: screen;
+            z-index: -5; /* Выше дыма, но под текстом */
             opacity: 0.2;
-            animation: chipsRain 45s linear infinite;
+            mix-blend-mode: screen;
+            animation: chipsMove 40s linear infinite;
         }
 
-        @keyframes chipsRain {
+        @keyframes chipsMove {
             from { background-position: 0 0; }
             to { background-position: 0 1000px; }
         }
 
-        /* КОНТЕНТ */
-        header { padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); position: relative; z-index: 10; }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        /* 3. КОНТЕНТ (ВСЕГДА СВЕРХУ) */
+        .main-container { position: relative; z-index: 10; padding-top: 50px; }
 
-        .hero { padding: 50px 20px; position: relative; z-index: 10; }
-
-        /* ТВОЙ ЛИМОННЫЙ 3D ЗАГОЛОВОК */
         h1 { 
-            color: #ccff00; font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
-            text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
-            text-shadow: 
-                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
+            color: #ccff00; font-size: 4.5em; margin: 10px 0; line-height: 0.9; 
+            text-transform: uppercase; font-weight: 900;
+            text-shadow: 0 1px 0 #88aa00, 0 2px 0 #779900, 0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
         }
 
         .hero-btn { 
             display: inline-block; background: #ccff00; color: #000; 
             padding: 18px 50px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase; margin: 30px 0;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+            font-weight: bold; margin: 30px 0;
         }
 
-        .card-img { 
-            width: 85%; max-width: 420px; 
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 25px rgba(204,255,0,0.3));
-        }
+        .card-img { width: 80%; max-width: 400px; mix-blend-mode: screen; }
     </style>
 </head>
 <body>
-    <div class="bg-container">
-        <div class="smoke-layer"></div>
-        <div class="chips-layer"></div>
-    </div>
+    <div class="layer-smoke"></div>
+    <div class="layer-chips"></div>
 
-    <header><div class="logo">ЗАМАЗКА _ViP</div></header>
-
-    <section class="hero">
-        <div style="color: #aaa; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em;">Крупнейший союз СНГ</div>
+    <div class="main-container">
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p style="font-size: 1.4em; font-weight: bold; letter-spacing: 2px; margin-top: 10px;">НАЧИНАЕТСЯ ЗДЕСЬ</p>
-        
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
-        
         <div>
             <img src="card_only.png" class="card-img">
         </div>
-        
-        <p style="color: #ccff00; font-weight: bold; margin-top: 30px;">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
-    </section>
+    </div>
 </body>
 </html>
