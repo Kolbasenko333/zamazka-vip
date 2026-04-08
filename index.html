@@ -8,71 +8,84 @@
         body { 
             margin: 0; padding: 0; background-color: #000; color: #fff; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center; overflow-x: hidden; 
+            text-align: center; overflow: hidden; 
         }
 
-        /* ЕДИНЫЙ ФОН: ФИШКИ НАД ДЫМОМ */
-        .main-background {
+        /* 1. ДЫМ — САМЫЙ НИЖНИЙ ПЛАН. ОН ЗАФИКСИРОВАН И НЕ ДВИГАЕТСЯ. */
+        .smoke-back {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            /* Сначала фишки (они сверху), потом дым (он снизу) */
-            background: 
-                url('ФИШКИ .png') repeat, 
-                url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
-            background-size: 300px, cover; /* Размер для фишек и для дыма отдельно */
-            opacity: 0.8;
-            animation: chipsFall 40s linear infinite;
+            background: url('green-smoke-spread-black-background.jpg') center center / cover no-repeat;
+            z-index: -5; /* Уходим максимально глубоко */
         }
 
-        /* Анимируем только фишки (первый фон), дым остается на месте */
-        @keyframes chipsFall {
-            from { background-position: 0 0, center center; }
-            to { background-position: 0 1000px, center center; }
+        /* 2. ФИШКИ — ЛЕТЯТ ПЕРЕД ДЫМОМ. */
+        .chips-front {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('ФИШКИ .png') repeat;
+            background-size: 350px; /* Размер фишек как на удачных скринах */
+            z-index: -4; /* Выше дыма, но под текстом */
+            opacity: 0.15; /* Делаем их едва заметными, чтобы не рябило */
+            mix-blend-mode: screen; /* Убирает черные границы у фишек */
+            animation: moveChips 40s linear infinite;
         }
 
-        header { padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        @keyframes moveChips {
+            from { background-position: 0 0; }
+            to { background-position: 0 1000px; }
+        }
+
+        header { padding: 20px; position: relative; z-index: 10; background: rgba(0,0,0,0.4); }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
 
-        .hero { padding: 60px 20px; position: relative; z-index: 10; }
+        .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ТВОЙ 3D ЗАГОЛОВОК ИЗ СОХРАНЕНИЯ */
+        /* ТВОЙ ТОТ САМЫЙ 3D ЗАГОЛОВОК */
         h1 { 
             color: #ccff00; font-size: 4.5em; margin: 10px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             text-shadow: 
                 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 6px 15px rgba(0,0,0,0.8);
+                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
         }
 
+        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; }
+        
         .hero-btn { 
             display: inline-block; background: #ccff00; color: #000; 
-            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            padding: 18px 50px; border-radius: 50px; text-decoration: none; 
             font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); margin: 30px 0;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
         }
 
+        .card-container { margin-top: 30px; }
         .card-img { 
-            width: 90%; max-width: 450px; 
+            width: 80%; max-width: 420px; 
             mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 30px rgba(204,255,0,0.2));
+            opacity: 0.7;
+            filter: drop-shadow(0 0 20px rgba(204,255,0,0.3));
         }
     </style>
 </head>
 <body>
-    <div class="main-background"></div>
+    <div class="smoke-back"></div>
+    <div class="chips-front"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
     <section class="hero">
-        <div style="color: #888; letter-spacing: 5px; font-size: 0.8em;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
+        <div style="color: #aaa; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em; margin-bottom: 10px;">Крупнейший союз СНГ</div>
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p style="font-size: 1.4em; font-weight: bold; letter-spacing: 3px;">НАЧИНАЕТСЯ ЗДЕСЬ</p>
+        <p class="sub-text">Начинается здесь</p>
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        <div>
+        <div class="card-container">
             <img src="card_only.png" class="card-img">
         </div>
+        
+        <p style="color: #ccff00; font-weight: bold; margin-top: 30px; text-transform: uppercase;">
+            + 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ
+        </p>
     </section>
 </body>
 </html>
