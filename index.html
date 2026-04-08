@@ -11,70 +11,96 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. САМЫЙ ЗАДНИЙ ПЛАН — ФИШКИ (z-index: -2) */
-        .chips-layer {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: url('ФИШКИ .png') repeat;
-            background-size: 380px;
+        /* 1. СЛОЙ С ФИШКАМИ (Теперь в самом низу) */
+        .chips-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('ФИШКИ .png') center/cover no-repeat;
             z-index: -2;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
-        /* 2. ПЕРЕДНИЙ ПЛАН ФОНА — ДЫМ С АНИМАЦИЕЙ (z-index: -1) */
-        /* Он перекрывает фишки, создавая глубину */
-        .smoke-layer {
-            position: fixed; top: 0; left: 0; width: 200%; height: 100%;
-            background: url('green-smoke-spread-black-background.jpg') repeat-x;
-            background-size: cover;
+        /* 2. СЛОЙ С ДЫМОМ (Теперь поверх фишек) */
+        .smoke-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
             z-index: -1;
-            opacity: 0.7;
-            animation: smokeMove 30s linear infinite;
+            mix-blend-mode: screen; /* Дым становится прозрачным там, где темно */
+            opacity: 0.8;
+            animation: smokeFloat 30s ease-in-out infinite;
         }
 
-        @keyframes smokeMove {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        @keyframes smokeFloat {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 0.9; }
         }
 
-        /* КОНТЕНТ */
-        .main-content { position: relative; z-index: 10; padding-top: 50px; }
+        header { padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; text-shadow: 0 0 15px rgba(204,255,0,0.6); }
 
-        header { padding: 20px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ВОССТАНОВЛЕННЫЙ 3D ЗАГОЛОВОК */
+        /* МОЩНЫЙ 3D ЗАГОЛОВОК */
         h1 { 
-            color: #ccff00; font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
+            font-size: 4.2em; margin: 10px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
+            color: #ccff00;
             text-shadow: 
                 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
+                0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
         }
 
+        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; }
+        
+        /* ЯРКИЙ ТЕКСТ ПРЕИМУЩЕСТВ */
+        .features { color: #ffffff; font-size: 1.1em; margin-bottom: 30px; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,1); }
+
+        /* КНОПКА С ПЛАВНЫМ ПЕРЕЛИВОМ */
         .hero-btn { 
-            display: inline-block; background: #ccff00; color: #000; 
-            padding: 18px 50px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase; margin: 30px 0;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+            display: inline-block; 
+            background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
+            background-size: 200% auto;
+            color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; text-transform: uppercase;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+            animation: moveGradient 4s linear infinite;
         }
 
+        @keyframes moveGradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* КАРТА */
         .card-img { 
-            width: 80%; max-width: 420px; 
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 25px rgba(204,255,0,0.3));
+            width: 85%; max-width: 420px; margin-top: 20px;
+            mix-blend-mode: screen;
+            filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.5));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-1deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .rb-text { 
+            color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.3em; 
+            text-shadow: 0 0 15px rgba(204,255,0,0.6);
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-    <div class="chips-layer"></div>
-    <div class="smoke-layer"></div>
+    <div class="chips-bg"></div>
+    <div class="smoke-bg"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
-    <div class="main-content">
-        <div style="color: #aaa; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
+    <section class="hero">
+        <div style="color: #fff; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8em; margin-bottom: 5px; opacity: 0.8;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p style="font-size: 1.4em; font-weight: bold; letter-spacing: 2px;">НАЧИНАЕТСЯ ЗДЕСЬ</p>
+        <p class="sub-text">НАЧИНАЕТСЯ ЗДЕСЬ</p>
+        <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
@@ -82,7 +108,7 @@
             <img src="card_only.png" class="card-img">
         </div>
         
-        <p style="color: #ccff00; font-weight: bold; margin-top: 30px;">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
-    </div>
+        <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
+    </section>
 </body>
 </html>
