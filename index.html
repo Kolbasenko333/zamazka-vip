@@ -5,92 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        /* Общие настройки страницы */
-        body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            background-color: #000; 
-            color: #fff; 
-            margin: 0; 
-            padding: 0;
-            overflow-x: hidden; 
-            text-align: center; 
-        }
-
-        /* ТВОЙ ЗЕЛЕНЫЙ ДЫМ НА ВЕСЬ ФОН */
+        body { font-family: 'Arial', sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; text-align: center; }
+        
+        /* ФОН С ДЫМОМ */
         .full-bg-smoke {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('green-smoke-spread-black-background.jpg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.4; 
-            z-index: -1;
-            filter: brightness(0.5); /* Немного приглушим, чтобы текст горел */
+            background-size: cover; background-position: center;
+            opacity: 0.3; z-index: -1; filter: brightness(0.4);
         }
 
-        /* Шапка сайта */
-        header { 
-            padding: 20px; 
-            background: rgba(12, 13, 12, 0.7); 
-            border-bottom: 1px solid #1a1a1a; 
-            backdrop-filter: blur(10px); 
-        }
+        header { padding: 20px; background: rgba(0,0,0,0.8); border-bottom: 1px solid #1a1a1a; }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
         
-        /* Главная секция */
-        .hero { 
-            padding: 40px 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            position: relative; 
-            z-index: 10; 
-        }
-        h1 { color: #ccff00; font-size: clamp(2.5em, 10vw, 4em); margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); }
-        p { color: #fff; max-width: 600px; margin: 20px auto; font-size: 1.1em; font-weight: 500; }
+        .hero { padding: 40px 20px; position: relative; z-index: 10; }
+        h1 { color: #ccff00; font-size: 3.5em; margin: 0; text-shadow: 0 0 15px rgba(204, 255, 0, 0.4); }
         
-        /* Кнопка */
         .hero-btn { 
-            display: inline-block; 
-            background: #ccff00; 
-            color: #000; 
-            padding: 18px 45px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            transition: 0.3s;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4); 
-            margin-bottom: 40px;
+            display: inline-block; background: #ccff00; color: #000; 
+            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; text-transform: uppercase; margin: 30px 0;
+            box-shadow: 0 0 20px rgba(204, 255, 0, 0.5);
         }
-        .hero-btn:hover { transform: scale(1.05); background: #fff; }
 
         /* КОНТЕЙНЕР ДЛЯ КАРТЫ */
-        .card-container {
-            perspective: 2000px;
-            width: 100%;
-            max-width: 650px;
-            display: flex; 
-            justify-content: center;
-            margin-top: 20px;
+        .card-box {
+            perspective: 1000px;
+            display: flex; justify-content: center;
+            margin-top: -20px; /* Немного наезжаем на кнопку для стиля */
         }
 
-        /* САМА КАРТА И АНИМАЦИЯ */
         .card-actor {
-            width: 90%;
-            max-width: 550px;
-            /* МАГИЯ: Убирает черный фон картинки */
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 50px rgba(204, 255, 0, 0.5));
-            animation: float3D 6s ease-in-out infinite;
-            transform-style: preserve-3d;
-            will-change: transform;
+            width: 90%; max-width: 500px;
+            /* ЖЕСТКОЕ УДАЛЕНИЕ ФОНА */
+            mix-blend-mode: lighten; 
+            filter: contrast(1.1) brightness(1.1) drop-shadow(0 0 30px rgba(204,255,0,0.6));
+            animation: fly 6s ease-in-out infinite;
         }
 
-        /* 3D Анимация полета */
-        @keyframes float3D {
-            0% { transform: rotateY(-18deg) rotateX(10deg) translateY(0); }
-            50% { transform: rotateY(18deg) rotateX(-10deg) translateY(-30px); }
-            100% { transform: rotateY(-18deg) rotateX(10deg) translateY
-                
+        @keyframes fly {
+            0%, 100% { transform: rotateY(-15deg) rotateX(5deg) translateY(0); }
+            50% { transform: rotateY(15deg) rotateX(-5deg) translateY(-25px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="full-bg-smoke"></div>
+    <header><div class="logo">ЗАМАЗКА _ViP</div></header>
+    <section class="hero">
+        <h1>50% <br> РЕЙКБЕК</h1>
+        <p>Быстрые выплаты • Депозиты 24/7 • Честная игра</p>
+        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        <div class="card-box">
+            <img src="hero_cards.png" class="card-actor">
+        </div>
+    </section>
+</body>
+</html>
