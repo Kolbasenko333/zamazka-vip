@@ -11,52 +11,49 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. УБИТА АНИМАЦИЯ ДЫМУ, ОН СЗАДИ */
-        .smoke-bg {
+        /* 1. СТАТИЧНЫЙ ДЫМ В САМОМ НИЗУ (без квадратов) */
+        .smoke-layer {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat fixed;
             opacity: 0.8;
-            /* Анимация удалена !!! Дым стоит на месте. */
         }
 
-        /* 2. ФИШКИ ВПЕРЕДИ И АНИМИРОВАНЫ (ПАДАЮТ) */
-        .falling-chips {
+        /* 2. АНИМИРОВАННЫЕ ФИШКИ ПОВЕРХ ДЫМА */
+        .chips-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            /* Используем твой файл фишек для фонового дождя */
             background: url('ФИШКИ .png') repeat;
-            background-size: 350px; /* Делаем фишки мелкими и стильными */
-            opacity: 0.15;
-            mix-blend-mode: screen; /* Прячем черный фон фишек */
-            /* Бесконечное падение фишек */
-            animation: chipsFallVertical 40s linear infinite;
+            background-size: 320px; 
+            opacity: 0.2;
+            mix-blend-mode: screen;
+            animation: chipsRain 35s linear infinite;
         }
 
-        @keyframes chipsFallVertical {
+        @keyframes chipsRain {
             from { background-position: 0 0; }
             to { background-position: 0 1000px; }
         }
 
         header { padding: 25px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.4em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
 
         .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ТВОЙ МОЩНЫЙ 3D ЗАГОЛОВОК ИЗ ТОЧКИ СОХРАНЕНИЯ */
+        /* ТВОЙ ЛЮБИМЫЙ 3D ЗАГОЛОВОК (Лимонный) */
         h1 { 
             font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             color: #ccff00;
             text-shadow: 
                 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 6px 15px rgba(0,0,0,0.8);
+                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
         }
 
         .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; }
-        .features { color: #eee; font-size: 1em; margin-bottom: 25px; opacity: 0.9; }
+        .features { color: #eee; font-size: 1em; margin-bottom: 30px; opacity: 0.9; }
 
-        /* КНОПКА С ПЕРЕЛИВОМ (ТУСКЛЫМ ИЗУМРУДОМ) */
+        /* КНОПКА С ТВОИМ ГРАДИЕНТОМ */
         .hero-btn { 
             display: inline-block; 
             background: linear-gradient(90deg, #00FF7F, #00fac4, #00FF7F);
@@ -64,20 +61,19 @@
             color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; 
             font-weight: bold; text-transform: uppercase;
             box-shadow: 0 0 30px rgba(0, 255, 127, 0.4);
-            animation: btnHue 4s linear infinite;
+            animation: btnShift 4s linear infinite;
         }
 
-        @keyframes btnHue {
+        @keyframes btnShift {
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
 
-        /* КАРТА: БЕЗ РАМОК И КВАДРАТОВ */
-        .card-container { margin-top: 30px; display: flex; justify-content: center; }
+        /* КАРТА: ПРОЗРАЧНАЯ И БЕЗ ЧЕРНОЙ РАМКИ */
         .card-img { 
-            width: 80%; max-width: 400px;
-            mix-blend-mode: screen; /* !!! Растворяет черный фон картинки */
-            opacity: 0.6; /* Добавили прозрачности по твоей просьбе */
+            width: 80%; max-width: 400px; margin-top: 25px;
+            mix-blend-mode: screen; 
+            opacity: 0.65;
             filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.3));
             animation: float 6s ease-in-out infinite;
         }
@@ -87,16 +83,28 @@
             50% { transform: translateY(-15px) rotate(2deg); }
         }
 
-        .rb-text { color: #ccff00; font-weight: bold; margin-top: 30px; font-size: 1.1em; text-transform: uppercase; }
+        .rb-text { color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.2em; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="smoke-bg"></div>
-    <div class="falling-chips"></div>
+    <div class="smoke-layer"></div>
+    <div class="chips-layer"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
     <section class="hero">
-        <div style="color: #fff; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em; margin-bottom: 10px; opacity: 0.7;">Крупнейший союз СНГ</div>
+        <div style="text-transform: uppercase; letter-spacing: 5px; font-size: 0.85em; margin-bottom: 10px; opacity: 0.8;">Крупнейший союз СНГ</div>
+        <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
+        <p class="sub-text">Начинается здесь</p>
+        <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
         
-        <h1>ТВОЙ ПУТЬ <br> К
+        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        
+        <div>
+            <img src="card_only.png" class="card-img">
+        </div>
+        
+        <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
+    </section>
+</body>
+</html>
