@@ -5,10 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; text-align: center; }
-        header { padding: 20px; background: #0c0d0c; border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; }
+        /* 1. НАСТРОЙКИ ТЕЛА И АНИМИРОВАННОГО ФОНА */
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-color: #000; 
+            /* Твой файл с дымом */
+            background-image: url('green-smoke-spread-black-background.jpg');
+            /* Делаем фон больше, чтобы он мог двигаться вверх-вниз */
+            background-size: 160% auto; 
+            background-position: center 0%;
+            color: #fff; 
+            margin: 0; 
+            overflow-x: hidden; 
+            text-align: center; 
+            
+            /* Запускаем движение дыма (60 секунд, плавно, бесконечно) */
+            animation: smokeMoveVertical 60s ease-in-out infinite;
+        }
+
+        /* АНИМАЦИЯ ДЫМА: СВЕРХУ ВНИЗ */
+        @keyframes smokeMoveVertical {
+            0% { background-position: 50% 0%; }
+            50% { background-position: 50% 100%; }
+            100% { background-position: 50% 0%; }
+        }
+
+        header { padding: 20px; background: rgba(12, 13, 12, 0.8); border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; backdrop-filter: blur(10px); }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
-        .hero { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; position: relative; } /* Добавлено position: relative */
+        
+        .hero { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; position: relative; }
         h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); position: relative; z-index: 2; }
         p { color: #fff; max-width: 600px; margin: 20px auto; font-size: 1.1em; font-weight: 500; letter-spacing: 1px; line-height: 1.5; position: relative; z-index: 2; }
         
@@ -22,40 +47,38 @@
         }
         .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        /* Контейнер для 3D эффекта и ФОНА ПОД КАРТУ */
+        /* 2. КОНТЕЙНЕР ДЛЯ КАРТЫ */
         .card-container { 
             perspective: 1200px; 
             width: 100%; 
             max-width: 550px; 
             margin-top: 10px; 
-            position: relative; /* Чтобы фон позиционировался относительно контейнера */
-            padding: 50px 0; /* Место для фона */
+            position: relative;
+            padding: 50px 0;
         }
         
-        /* НОВЫЙ ЭЛЕМЕНТ: ФОН ПОД КАРТУ (Мягкое свечение) */
+        /* Свечение за картой */
         .card-shadow-bg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%); /* Центрирование */
-            width: 120%; /* Чуть шире контейнера */
-            height: 120%; /* Чуть выше контейнера */
-            /* Радиальный градиент: от прозрачного зеленого к черному */
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%; /* Овальная форма */
-            z-index: 1; /* Позади карты */
-            filter: blur(20px); /* Размытие для мягкости */
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%; height: 120%;
+            background: radial-gradient(circle, rgba(204, 255, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            z-index: 1;
+            filter: blur(40px);
         }
 
+        /* 3. САМА КАРТА (БЕЗ КВАДРАТА) */
         .hero-img { 
             width: 100%; 
-            border: none;
-            outline: none;
-            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.2));
+            /* Убираем черный фон у картинки на лету */
+            mix-blend-mode: screen; 
+            filter: contrast(1.1) brightness(1.1) drop-shadow(0 0 30px rgba(204, 255, 0, 0.3));
             animation: floatCard 6s ease-in-out infinite; 
             transform-style: preserve-3d;
             position: relative;
-            z-index: 2; /* Карта впереди фона */
+            z-index: 2;
         }
 
         @keyframes floatCard {
@@ -68,15 +91,14 @@
 <body>
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
     <section class="hero">
-        <span style="color: #666; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; position: relative; z-index: 2;">Крупнейший союз СНГ</span>
+        <span style="color: #888; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9em; position: relative; z-index: 2;">Крупнейший союз СНГ</span>
         <h1 style="margin-top: 10px;">50% <br> РЕЙКБЕК</h1>
         <p>Самые быстрые выплаты • Моментальные депозиты • Честная игра</p>
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
         <div class="card-container">
             <div class="card-shadow-bg"></div>
-            
-            <img src="card_only.png" alt="Poker Cards" class="hero-img">
+            <img src="card_only.png?v=1" alt="Poker Cards" class="hero-img">
         </div>
     </section>
 </body>
