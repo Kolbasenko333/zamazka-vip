@@ -11,31 +11,43 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* ЕДИНЫЙ СЛОЙ ФОНА ДЛЯ ВСЕГО */
-        .universal-bg {
+        /* ЕДИНЫЙ КОНТЕЙНЕР ДЛЯ ФОНА */
+        .bg-container {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1;
-            /* Порядок: 1. Фишки (сверху) | 2. Дым (снизу) */
-            background-image: url('ФИШКИ .png'), url('green-smoke-spread-black-background.jpg');
-            background-position: 0 0, center center;
-            background-repeat: repeat, no-repeat;
-            background-size: 350px, cover;
-            opacity: 0.9;
-            animation: moveOnlyChips 45s linear infinite;
+            overflow: hidden;
         }
 
-        /* Анимируем только первый слой (фишки), дым (второй слой) стоит на месте */
-        @keyframes moveOnlyChips {
-            from { background-position: 0 0, center center; }
-            to { background-position: 0 1000px, center center; }
+        /* ДЫМ (САМЫЙ НИЖНИЙ) */
+        .smoke-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
+            z-index: 1;
         }
 
+        /* ФИШКИ (ПОВЕРХ ДЫМА) */
+        .chips-layer {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('ФИШКИ .png') repeat;
+            background-size: 350px;
+            z-index: 2;
+            mix-blend-mode: screen;
+            opacity: 0.2;
+            animation: chipsRain 45s linear infinite;
+        }
+
+        @keyframes chipsRain {
+            from { background-position: 0 0; }
+            to { background-position: 0 1000px; }
+        }
+
+        /* КОНТЕНТ */
         header { padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); position: relative; z-index: 10; }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
 
         .hero { padding: 50px 20px; position: relative; z-index: 10; }
 
-        /* ВОЗВРАЩАЕМ ТОТ САМЫЙ ЛИМОННЫЙ 3D ЗАГОЛОВОК ИЗ СОХРАНЕНИЯ */
+        /* ТВОЙ ЛИМОННЫЙ 3D ЗАГОЛОВОК */
         h1 { 
             color: #ccff00; font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
@@ -51,7 +63,6 @@
             box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
         }
 
-        /* КАРТА ТЕПЕРЬ ВСЕГДА ОДНА */
         .card-img { 
             width: 85%; max-width: 420px; 
             mix-blend-mode: screen; 
@@ -60,7 +71,10 @@
     </style>
 </head>
 <body>
-    <div class="universal-bg"></div>
+    <div class="bg-container">
+        <div class="smoke-layer"></div>
+        <div class="chips-layer"></div>
+    </div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
