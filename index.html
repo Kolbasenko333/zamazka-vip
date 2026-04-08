@@ -11,88 +11,82 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. ДЫМ — САМЫЙ НИЖНИЙ ПЛАН (z-index: -2) */
-        /* Мы используем cover, чтобы дым был один на весь экран без повторов */
-        .smoke-bg {
+        /* 1. ДЫМ — САМЫЙ ЗАДНИЙ ФОН (ГЛУБИНА -2) */
+        #smoke-background {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: url('green-smoke-spread-black-background.jpg') center center / cover no-repeat;
-            z-index: -2;
-            opacity: 0.9;
+            z-index: -2; /* Жестко в самый низ */
+            pointer-events: none; /* Чтобы не мешал кликать */
         }
 
-        /* 2. ФИШКИ — СЛОЙ НАД ДЫМОМ (z-index: -1) */
-        .chips-animation {
+        /* 2. ФИШКИ — СЛОЙ НАД ДЫМОМ (ГЛУБИНА -1) */
+        #chips-animation {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background: url('ФИШКИ .png') repeat;
-            background-size: 380px; /* Размер как на твоем самом первом удачном скрине */
-            z-index: -1;
-            mix-blend-mode: screen; /* Прячет черные квадраты вокруг фишек */
+            background-size: 350px; 
+            z-index: -1; /* Выше дыма, но под буквами */
+            mix-blend-mode: screen; 
             opacity: 0.2;
-            animation: chipsFalling 40s linear infinite;
+            animation: fallChips 45s linear infinite;
+            pointer-events: none;
         }
 
-        @keyframes chipsFalling {
+        @keyframes fallChips {
             from { background-position: 0 0; }
             to { background-position: 0 1000px; }
         }
 
-        /* КОНТЕНТ */
-        header { padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        /* КОНТЕНТ — ОН ВСЕГДА СВЕРХУ (z-index по умолчанию выше) */
+        .content { position: relative; z-index: 10; padding-top: 60px; }
 
-        .hero { padding: 50px 20px; position: relative; z-index: 10; }
+        header { padding: 20px; background: rgba(0,0,0,0.4); backdrop-filter: blur(8px); }
+        .logo { color: #ccff00; font-weight: bold; font-size: 1.5em; letter-spacing: 2px; }
 
-        /* ВОЗВРАЩАЕМ ТОТ САМЫЙ ЛИМОННЫЙ 3D ЗАГОЛОВОК */
+        /* ТВОЙ ЛИМОННЫЙ 3D ЗАГОЛОВОК */
         h1 { 
-            color: #ccff00; font-size: 4.5em; margin: 10px 0; line-height: 0.9; 
+            color: #ccff00; font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             text-shadow: 
-                0 1px 0 #88aa00, 
-                0 2px 0 #779900, 
-                0 3px 0 #668800, 
-                0 4px 0 #557700, 
-                0 10px 20px rgba(0,0,0,0.8);
+                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
+                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
         }
 
-        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 30px; }
-
-        .hero-btn { 
+        .btn { 
             display: inline-block; background: #ccff00; color: #000; 
-            padding: 18px 50px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; text-transform: uppercase; margin-top: 30px;
+            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
         }
 
-        /* ИСПРАВЛЕННАЯ КАРТА (ОДНА, А НЕ МНОГО) */
-        .card-box { margin-top: 40px; }
+        /* КАРТА — ТЕПЕРЬ ОНА ОДНА */
+        .card-container { margin-top: 40px; }
         .card-img { 
-            width: 80%; max-width: 400px; 
+            width: 85%; max-width: 420px; 
             mix-blend-mode: screen; 
-            opacity: 0.8;
             filter: drop-shadow(0 0 25px rgba(204,255,0,0.3));
         }
 
-        .rb-text { color: #ccff00; font-weight: bold; margin-top: 30px; }
+        .footer-text { color: #ccff00; font-weight: bold; margin-top: 30px; letter-spacing: 1px; }
     </style>
 </head>
 <body>
-    <div class="smoke-bg"></div>
-    <div class="chips-animation"></div>
+    <div id="smoke-background"></div>
+    <div id="chips-animation"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
-    <section class="hero">
-        <div style="color: #888; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em; margin-bottom: 10px;">Крупнейший союз СНГ</div>
+    <div class="content">
+        <div style="color: #888; letter-spacing: 5px; font-size: 0.8em;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p class="sub-text">Начинается здесь</p>
+        <p style="font-size: 1.3em; font-weight: bold; letter-spacing: 3px;">НАЧИНАЕТСЯ ЗДЕСЬ</p>
         
-        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        <a href="https://t.me/zamazka_vip_bot" class="btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        <div class="card-box">
+        <div class="card-container">
             <img src="card_only.png" class="card-img">
         </div>
         
-        <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
-    </section>
+        <p class="footer-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
+    </div>
 </body>
 </html>
