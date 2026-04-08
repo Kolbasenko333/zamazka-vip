@@ -11,27 +11,28 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. СЛОЙ С ДЫМОМ */
+        /* 1. ДЫМ СЗАДИ (БЕЗ АНИМАЦИИ) */
         .smoke-layer {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('green-smoke-spread-black-background.jpg') center 0% / 160% auto no-repeat;
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -2;
-            animation: smokeMoveVertical 60s ease-in-out infinite;
+            background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat fixed;
+            opacity: 0.8;
         }
 
-        /* 2. СЛОЙ С ФИШКАМИ */
+        /* 2. ФИШКИ ВПЕРЕДИ С АНИМАЦИЕЙ ПАДЕНИЯ */
         .chips-layer {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('ФИШКИ .png') center/cover no-repeat;
             z-index: -1;
-            mix-blend-mode: screen; 
-            opacity: 0.6;
+            background: url('ФИШКИ .png') repeat;
+            background-size: 320px; 
+            opacity: 0.25;
+            mix-blend-mode: screen;
+            animation: chipsRain 40s linear infinite;
         }
 
-        @keyframes smokeMoveVertical {
-            0% { background-position: center 0%; }
-            50% { background-position: center 100%; }
-            100% { background-position: center 0%; }
+        @keyframes chipsRain {
+            from { background-position: 0 0; }
+            to { background-position: 0 1000px; }
         }
 
         header { 
@@ -42,16 +43,21 @@
 
         .hero { padding: 60px 20px; position: relative; z-index: 10; }
 
-        /* 3D ЗАГОЛОВОК */
+        /* 3D ЗАГОЛОВОК (ТВОЙ ШРИФТ) */
         h1 { 
             color: #ccff00; font-size: 4.5em; margin: 10px 0; line-height: 0.9; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
-            text-shadow: 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 0 4px 0 #557700, 0 6px 15px rgba(0,0,0,0.8), 0 0 30px rgba(204,255,0,0.4);
+            text-shadow: 
+                0 1px 0 #88aa00, 
+                0 2px 0 #779900, 
+                0 3px 0 #668800, 
+                0 4px 0 #557700, 
+                0 6px 15px rgba(0,0,0,0.8), 
+                0 0 30px rgba(204,255,0,0.4);
         }
 
         .sub-text { font-size: 1.4em; color: #fff; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; }
         
-        /* Стили для преимуществ */
         .features { color: #888; font-size: 1em; margin-bottom: 30px; letter-spacing: 1px; }
 
         .hero-btn { 
@@ -63,8 +69,12 @@
         .hero-btn:hover { transform: scale(1.05); }
 
         .card-container { perspective: 1200px; width: 100%; max-width: 500px; margin: 0 auto; }
+        
+        /* КАРТА БЕЗ РАМОК */
         .card-img { 
-            width: 100%; mix-blend-mode: screen; opacity: 0.85;
+            width: 100%; 
+            mix-blend-mode: screen; 
+            opacity: 0.8;
             filter: contrast(0.9) brightness(0.9) drop-shadow(0 0 30px rgba(204, 255, 0, 0.2));
             animation: floatCard 6s ease-in-out infinite;
         }
