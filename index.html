@@ -5,90 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        /* АНИМИРОВАННЫЙ ФОН: Без изменений */
         body { 
-            font-family: 'Helvetica Neue', Arial, sans-serif; 
-            background-color: #000; 
-            background-image: url('green-smoke-spread-black-background.jpg');
-            background-size: 160% auto; 
-            background-position: center 0%;
-            color: #fff; 
-            margin: 0; 
-            overflow-x: hidden; 
-            text-align: center; 
-            animation: smokeMoveVertical 60s ease-in-out infinite;
-        }
-        @keyframes smokeMoveVertical {
-            0% { background-position: 50% 0%; }
-            50% { background-position: 50% 100%; }
-            100% { background-position: 50% 0%; }
+            margin: 0; padding: 0; background-color: #000; color: #fff;
+            font-family: Arial, sans-serif; text-align: center; overflow-x: hidden;
         }
 
-        header { padding: 20px; background: rgba(12, 13, 12, 0.8); border-bottom: 1px solid #1a1a1a; display: flex; justify-content: center; backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
+        /* Настройка фона: дым + фишки */
+        .main-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            /* Сначала дым, сверху фишки (через запятую) */
+            background: 
+                url('falling_chips.png') center/cover no-repeat,
+                url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
+            z-index: -1;
+            opacity: 0.6; /* Приглушаем фон */
+        }
+
+        .content { position: relative; z-index: 10; padding: 60px 20px; }
         
-        .hero { padding: 60px 20px; display: flex; flex-direction: column; align-items: center; position: relative; }
-        h1 { color: #ccff00; font-size: 3.5em; margin: 0; line-height: 1.1; text-shadow: 0 0 20px rgba(204, 255, 0, 0.3); position: relative; z-index: 2; }
-        p { color: #fff; max-width: 600px; margin: 20px auto; font-size: 1.1em; font-weight: 500; letter-spacing: 1px; line-height: 1.5; position: relative; z-index: 2; }
-        
-        .hero-btn { 
+        h1 { color: #ccff00; font-size: 3.5em; margin-bottom: 10px; }
+        .btn { 
             display: inline-block; background: #ccff00; color: #000; 
-            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase; transition: 0.3s;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
-            margin-bottom: 30px;
-            position: relative; z-index: 10;
+            padding: 15px 40px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; margin: 20px 0;
         }
-        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        /* КОНТЕЙНЕР: Место для наложения тумана */
-        .card-container { 
-            perspective: 1200px; 
-            width: 100%; 
-            max-width: 550px; 
-            margin-top: 10px; 
-            position: relative;
-            padding: 50px 0;
+        .card-img {
+            width: 80%; max-width: 450px;
+            mix-blend-mode: screen; /* Убираем черный квадрат */
+            filter: brightness(0.8); /* Приглушаем яркость карты */
         }
+    </style>
+</head>
+<body>
+    <div class="main-bg"></div>
+    
+    <div class="content">
+        <div style="color: #ccff00; letter-spacing: 2px;">ЗАМАЗКА _ViP</div>
+        <h1>50% <br> РЕЙКБЕК</h1>
+        <p>Быстрые выплаты • Депозиты 24/7 • Честная игра</p>
+        <a href="https://t.me/zamazka_vip_bot" class="btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        /* Свечение за картой: Приглушили */
-        .card-shadow-bg {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(204, 255, 0, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
-            z-index: 1;
-            filter: blur(40px);
-        }
-
-        /* КАРТА (АТМОСФЕРНАЯ) */
-        .hero-img { 
-            width: 100%; 
-            mix-blend-mode: screen; 
-            /* !!! ГЛАВНОЕ: Убрали контраст, приглушили яркость !!! */
-            filter: contrast(0.8) brightness(0.9) drop-shadow(0 0 20px rgba(204, 255, 0, 0.2));
-            /* !!! СДЕЛАЛИ ПОЛУПРОЗРАЧНОЙ !!! */
-            opacity: 0.85; 
-            animation: floatCard 6s ease-in-out infinite; 
-            transform-style: preserve-3d;
-            position: relative;
-            z-index: 2; /* Карта впереди "свечения" */
-        }
-
-        /* !!! НОВЫЙ ЭЛЕМЕНТ: "НАЛОЖЕННЫЙ ТУМАН" ПОВЕРХ КАРТЫ !!! */
-        .hero::after {
-            content: "";
-            position: absolute;
-            bottom: -50px; /* Накладываем на область карты */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 200px; /* Глубина тумана */
-            background-image: url('green-smoke-spread-black-background.jpg');
-            background-size: 150%;
-            background-position: center bottom;
-            /* !!! ДЕЛАЕМ ПРОЗРАЧНЫМ ТОЛЬКО ЧЕРНОЕ НА ЭТОМ ТУМАНЕ !!! */
-            mix-blend-mode: screen;
-        
+        <div>
+            <img src="hero_cards.png" class="card-img">
+        </div>
+    </div>
+</body>
+</html>
