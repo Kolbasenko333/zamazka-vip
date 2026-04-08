@@ -5,77 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
-        /* Обнуляем всё лишнее */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { 
-            background-color: #000; 
-            color: #fff; 
+            margin: 0; padding: 0; background-color: #000; color: #fff; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
+            text-align: center; overflow-x: hidden; 
         }
 
-        /* ЕДИНЫЙ ФОН: ДЫМ ВНИЗУ, ФИШКИ СВЕРХУ */
-        .page-bg {
-            position: fixed;
-            inset: 0;
+        /* 1. СЛОЙ ДЫМА (НИЖНИЙ) */
+        .smoke-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
+            z-index: -2;
+            opacity: 0.8;
+        }
+
+        /* 2. СЛОЙ ФИШЕК (ПОВЕРХ ДЫМА) */
+        .chips-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: url('ФИШКИ .png') repeat;
+            background-size: 350px;
             z-index: -1;
-            /* Сначала фишки (над дымом), потом сам дым */
-            background-image: url('ФИШКИ .png'), url('green-smoke-spread-black-background.jpg');
-            background-position: 0 0, center;
-            background-repeat: repeat, no-repeat;
-            background-size: 350px, cover;
-            opacity: 0.9;
-            /* Анимируем только фишки (первый слой), дым статичен */
-            animation: chipsScroll 40s linear infinite;
+            mix-blend-mode: screen;
+            opacity: 0.2;
+            animation: chipsRain 40s linear infinite;
         }
 
-        @keyframes chipsScroll {
-            from { background-position: 0 0, center; }
-            to { background-position: 0 1000px, center; }
+        @keyframes chipsRain {
+            from { background-position: 0 0; }
+            to { background-position: 0 1000px; }
         }
 
-        /* КОНТЕНТ */
-        .content { position: relative; z-index: 10; padding: 40px 20px; }
+        /* 3. КОНТЕНТ */
+        .main-content { position: relative; z-index: 10; padding-top: 60px; }
 
-        header { padding: 20px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); width: 100%; }
-        .logo { color: #ccff00; font-weight: bold; font-size: 1.5em; letter-spacing: 2px; }
+        header { padding: 20px; background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
 
         /* ТОТ САМЫЙ 3D ЗАГОЛОВОК */
         h1 { 
             color: #ccff00; font-size: 4.5em; margin: 15px 0; line-height: 0.9; 
-            text-transform: uppercase; font-weight: 900;
+            text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             text-shadow: 
-                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 20px rgba(0,0,0,0.8);
+                0 1px 0 #88aa00, 
+                0 2px 0 #779900, 
+                0 3px 0 #668800, 
+                0 4px 0 #557700, 
+                0 10px 20px rgba(0,0,0,0.8);
         }
 
         .btn { 
             display: inline-block; background: #ccff00; color: #000; 
-            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            padding: 18px 50px; border-radius: 50px; text-decoration: none; 
             font-weight: bold; text-transform: uppercase; margin: 30px 0;
-            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
         }
 
-        /* КАРТА ТЕПЕРЬ ВСЕГДА ОДНА */
         .card-img { 
-            width: 85%; max-width: 420px; 
+            width: 80%; max-width: 420px; 
             mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 20px rgba(204,255,0,0.3));
+            filter: drop-shadow(0 0 25px rgba(204,255,0,0.3));
         }
     </style>
 </head>
 <body>
-    <div class="page-bg"></div>
+    <div class="smoke-bg"></div>
+    <div class="chips-bg"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
-    <div class="content">
-        <div style="color: #888; letter-spacing: 5px; font-size: 0.8em;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
+    <div class="main-content">
+        <div style="color: #888; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em;">Крупнейший союз СНГ</div>
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
         <p style="font-size: 1.4em; font-weight: bold; letter-spacing: 2px;">НАЧИНАЕТСЯ ЗДЕСЬ</p>
         
@@ -84,6 +83,8 @@
         <div>
             <img src="card_only.png" class="card-img">
         </div>
+        
+        <p style="color: #ccff00; font-weight: bold; margin-top: 30px;">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
     </div>
 </body>
 </html>
