@@ -5,105 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЗАМАЗКА _ViP | Покерный Клуб</title>
     <style>
+        /* БАЗОВЫЕ НАСТРОЙКИ СТРАНИЦЫ */
         body { 
             margin: 0; padding: 0; background-color: #000; color: #fff; 
             font-family: 'Helvetica Neue', Arial, sans-serif; 
             text-align: center; overflow-x: hidden; 
         }
 
-        /* Убираем квадраты: растягиваем фон намертво */
-        .smoke-bg {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -2;
-            /* Добавили ?v=1, чтобы сбросить кэш */
-            background: url('green-smoke-spread-black-background.jpg?v=1') center/cover no-repeat fixed;
-            opacity: 0.8;
-        }
-
-        /* Фишки: теперь точно падают мелко */
-        .falling-chips {
+        /* АНИМИРОВАННЫЙ ФОН: ДЫМ + ФИШКИ */
+        .main-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            background: url('ФИШКИ .png?v=1') repeat;
-            background-size: 320px; 
-            opacity: 0.15;
-            mix-blend-mode: screen;
-            animation: chipsFall 35s linear infinite;
+            /* Накладываем ФИШКИ поверх ДЫМА */
+            background: 
+                url('ФИШКИ .png') center/cover no-repeat,
+                url('green-smoke-spread-black-background.jpg') center 0% / 160% auto no-repeat;
+            
+            /* Прозрачность для объединения слоев */
+            mix-blend-mode: screen; 
+            opacity: 0.7; /* Сделали фон чуть ярче */
+            
+            /* Движение дыма вверх-вниз */
+            animation: smokeMoveVertical 60s ease-in-out infinite;
         }
 
-        @keyframes chipsFall {
-            from { background-position: 0 0; }
-            to { background-position: 0 1000px; }
+        @keyframes smokeMoveVertical {
+            0% { background-position: center 0%; }
+            50% { background-position: center 100%; }
+            100% { background-position: center 0%; }
         }
 
-        header { padding: 20px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.4em; font-weight: bold; color: #fff; letter-spacing: 5px; text-transform: uppercase; }
+        /* ШАПКА */
+        header { 
+            padding: 20px; 
+            background: rgba(12, 13, 12, 0.7); 
+            border-bottom: 1px solid #1a1a1a; 
+            backdrop-filter: blur(10px); 
+        }
+        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 2px; }
 
-        .hero { padding: 40px 20px; position: relative; z-index: 10; }
+        /* КОНТЕНТ */
+        .hero { padding: 60px 20px; position: relative; z-index: 10; }
 
-        /* Изумрудный премиум цвет */
+        /* 3D ЗАГОЛОВОК */
         h1 { 
-            font-size: 4.5em; margin: 15px 0; line-height: 1; 
-            text-transform: uppercase; font-weight: 900;
-            color: #00FF7F !important; /* !important принудительно ставит цвет */
-            text-shadow: 0 0 25px rgba(0, 255, 127, 0.6), 0 5px 15px rgba(0,0,0,0.8);
+            color: #ccff00; 
+            font-size: 4.5em; 
+            margin: 10px 0; 
+            line-height: 0.9; 
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -2px;
+            /* Эффект объема */
+            text-shadow: 
+                0 1px 0 #88aa00,
+                0 2px 0 #779900,
+                0 3px 0 #668800,
+                0 4px 0 #557700,
+                0 6px 15px rgba(0,0,0,0.8),
+                0 0 30px rgba(204,255,0,0.4);
         }
 
-        .sub-text { font-size: 1.3em; font-weight: bold; letter-spacing: 5px; margin-bottom: 5px; }
-        .features { color: #eee; font-size: 1em; margin-bottom: 35px; }
+        .sub-text {
+            font-size: 1.4em; 
+            color: #fff; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #000;
+        }
 
-        /* Кнопка с переливом */
+        /* !!! ЧИТАЕМЫЙ СЕРЫЙ ТЕКСТ (СДЕЛАЛИ ПОЯРЧЕ) !!! */
+        .features { 
+            color: #ccc; /* Сменили #aaa на #ccc, чтобы буквы были заметнее */
+            font-size: 1em; 
+            margin-bottom: 20px; 
+            letter-spacing: 1px; 
+            text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Добавили мягкую тень для контраста */
+        }
+
+        /* !!! КНОПКА (ТУСКЛЫЙ И ГЛУБОКИЙ ПЕРЕЛИВ) !!! */
         .hero-btn { 
             display: inline-block; 
+            /* МЕНЕЕ КИСЛОТНЫЕ ЦВЕТА: Убрали салатовый (#ccff00), оставили глубокий изумрудный и бирюзовый */
             background: linear-gradient(90deg, #00FF7F, #00fac4, #00FF7F);
-            background-size: 200% auto;
-            color: #000; padding: 18px 45px; border-radius: 50px; 
-            text-decoration: none; font-weight: bold; text-transform: uppercase;
+            background-size: 200% auto; 
+            color: #000; 
+            padding: 18px 45px; border-radius: 50px; text-decoration: none; 
+            font-weight: bold; text-transform: uppercase; transition: 0.3s;
+            /* Мощное неоновое свечение кнопки */
             box-shadow: 0 0 30px rgba(0, 255, 127, 0.5);
-            animation: btnShift 4s linear infinite;
+            margin-bottom: 40px;
+            /* Запускает плавный перелив (hueMove) */
+            animation: hueMove 4s linear infinite;
+        }
+        .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 50px rgba(0, 255, 127, 0.7); }
+
+        /* !!! КАРТА (АТМОСФЕРНАЯ И БЕЗ ЧЕРНОГО КВАДРАТА) !!! */
+        .card-container {
+            perspective: 1200px;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        @keyframes btnShift {
+        .card-img {
+            width: 100%;
+            /* !!! ГЛАВНОЕ: Убираем черный квадрат у картинки !!! */
+            mix-blend-mode: screen; 
+            opacity: 0.85; /* Сделали карту чуть менее прозрачной */
+            /* Увеличили сочность и неоновое свечение карты */
+            filter: contrast(0.9) brightness(1.1) drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
+            /* Добавили плавное движение карты */
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0% { transform: rotateY(-15deg) rotateX(5deg) translateY(0); }
+            50% { transform: rotateY(15deg) rotateX(-5deg) translateY(-20px); }
+            100% { transform: rotateY(-15deg) rotateX(5deg) translateY(0); }
+        }
+
+        /* ОПИСАНИЕ АНИМАЦИИ: Двигаем градиент слева направо */
+        @keyframes hueMove {
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
-
-        /* Карта: максимально прозрачная и без черных боксов */
-        .card-img { 
-            width: 75%; max-width: 380px; margin-top: 30px;
-            mix-blend-mode: screen !important; 
-            opacity: 0.6;
-            filter: drop-shadow(0 0 25px rgba(0, 255, 127, 0.3));
-            animation: cardFloat 6s ease-in-out infinite;
-        }
-
-        @keyframes cardFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .rb-text { color: #00FF7F; font-weight: bold; margin-top: 40px; font-size: 1.1em; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="smoke-bg"></div>
-    <div class="falling-chips"></div>
+    <div class="main-bg"></div>
 
     <header><div class="logo">ЗАМАЗКА _ViP</div></header>
 
     <section class="hero">
-        <div style="font-size: 0.8em; letter-spacing: 5px; margin-bottom: 10px; opacity: 0.6;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
+        <div style="color: #888; text-transform: uppercase; letter-spacing: 5px; font-size: 0.8em; margin-bottom: 10px;">Крупнейший союз СНГ</div>
+        
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p class="sub-text">НАЧИНАЕТСЯ ЗДЕСЬ</p>
+        <p class="sub-text">Начинается здесь</p>
+        
         <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
         
-        <div>
-            <img src="card_only.png?v=1" class="card-img">
+        <div class="card-container">
+            <img src="card_only.png" alt="Poker Card" class="card-img">
         </div>
         
-        <p class="rb-text">+ 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ</p>
+        <p style="color: #ccff00; font-weight: bold; margin-top: 30px; letter-spacing: 1px;">
+            + 50% РЕЙКБЕК КАЖДОМУ ИГРОКУ
+        </p>
     </section>
 </body>
 </html>
