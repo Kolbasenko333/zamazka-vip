@@ -22,15 +22,13 @@
         }
         .hero-btn:hover { transform: scale(1.05); box-shadow: 0 0 40px rgba(204, 255, 0, 0.6); }
 
-        /* Контейнер для 3D эффекта */
         .card-container { perspective: 1200px; width: 100%; max-width: 500px; margin-top: 10px; }
         
         .hero-img { 
             width: 100%; 
-            border: none; /* Убираем любые рамки */
-            outline: none;
-            /* Важно: drop-shadow подсвечивает только саму карту, игнорируя углы картинки */
-            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.2));
+            /* МАГИЯ ТУТ: этот режим убирает черный фон с картинки */
+            mix-blend-mode: screen; 
+            filter: drop-shadow(0 0 30px rgba(204, 255, 0, 0.4));
             animation: floatCard 6s ease-in-out infinite; 
             transform-style: preserve-3d;
         }
