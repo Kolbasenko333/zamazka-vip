@@ -12,21 +12,16 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. СЛОЙ С ФИШКАМИ */
         .chips-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('ФИШКИ .png') center/cover no-repeat;
-            z-index: -2;
-            opacity: 0.5;
+            z-index: -2; opacity: 0.4;
         }
 
-        /* 2. СЛОЙ С ДЫМОМ */
         .smoke-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
-            z-index: -1;
-            mix-blend-mode: screen; 
-            opacity: 0.8;
+            z-index: -1; mix-blend-mode: screen; opacity: 0.8;
             animation: smokePulse 20s ease-in-out infinite;
         }
 
@@ -35,29 +30,30 @@
             50% { transform: scale(1.1); opacity: 0.9; }
         }
 
-        header { padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
+        header { padding: 15px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
         .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; }
 
-        .hero { padding: 40px 20px; position: relative; z-index: 10; }
+        .hero { padding: 30px 20px; position: relative; z-index: 10; }
 
         h1 { 
-            font-size: 4.2em; margin: 10px 0; line-height: 0.95; 
-            text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
+            font-size: 3.5em; margin: 5px 0; line-height: 0.95; 
+            text-transform: uppercase; font-weight: 900;
             color: #ccff00;
-            text-shadow: 0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
+            text-shadow: 0 10px 25px rgba(0,0,0,0.9);
         }
 
-        .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; }
-        .features { color: #ffffff; font-size: 1.1em; margin-bottom: 30px; letter-spacing: 1px; }
+        .sub-text { font-size: 1.2em; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 
+        /* 1. ГЛАВНАЯ КНОПКА (БОТ) */
         .hero-btn { 
             display: inline-block; 
             background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
             background-size: 200% auto;
-            color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; 
-            font-weight: bold; text-transform: uppercase;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.6);
+            color: #000; padding: 20px 50px; border-radius: 50px; text-decoration: none; 
+            font-weight: 900; text-transform: uppercase; font-size: 1.2em;
+            box-shadow: 0 0 40px rgba(204, 255, 0, 0.5);
             animation: moveGradient 4s linear infinite;
+            margin-bottom: 35px;
         }
 
         @keyframes moveGradient {
@@ -65,52 +61,42 @@
             100% { background-position: 200% center; }
         }
 
-        /* КНОПКИ СОЦСЕТЕЙ (WhatsApp и VK) */
+        /* 2. КНОПКИ СОЦСЕТЕЙ */
         .social-container {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
+            margin-bottom: 40px;
+            display: flex; justify-content: center; gap: 25px;
         }
 
         .social-item {
-            text-decoration: none;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ccff00;
-            transition: all 0.3s ease;
-            color: #fff;
-            font-size: 24px; /* Размер иконок */
+            text-decoration: none; width: 60px; height: 60px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #ccff00; transition: all 0.3s ease;
+            color: #ccff00; font-size: 28px;
         }
 
-        .social-item:hover {
-            transform: scale(1.1);
-            color: #000;
-            background: #ccff00;
-            box-shadow: 0 0 20px #ccff00;
+        .social-item:hover { transform: scale(1.1); color: #000; background: #ccff00; box-shadow: 0 0 20px #ccff00; }
+
+        /* 3. КНОПКА ПОДДЕРЖКИ */
+        .support-btn {
+            display: inline-block;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff; padding: 12px 30px; border-radius: 5px;
+            text-decoration: none; font-size: 0.85em; font-weight: bold;
+            text-transform: uppercase; transition: all 0.3s;
+            margin-top: 20px;
+            opacity: 0.7;
         }
 
-        .social-item.wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 0 20px #25D366; color: #fff; }
-        .social-item.vk:hover { background: #0077FF; border-color: #0077FF; box-shadow: 0 0 20px #0077FF; color: #fff; }
+        .support-btn:hover { border-color: #ff4444; color: #ff4444; opacity: 1; }
 
         .card-img { 
-            width: 85%; max-width: 400px; margin-top: 20px;
-            mix-blend-mode: screen;
-            filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.5));
-            animation: floatCard 6s ease-in-out infinite;
+            width: 70%; max-width: 300px; margin: 20px 0;
+            mix-blend-mode: screen; opacity: 0.8;
         }
 
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-15px) rotate(1deg); }
-        }
-
-        .rb-text { color: #ccff00; font-weight: bold; margin-top: 30px; font-size: 1.2em; text-transform: uppercase; }
+        .rb-text { color: #ccff00; font-weight: bold; font-size: 1em; text-transform: uppercase; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -120,29 +106,30 @@
     <header><div class="logo">VIP</div></header>
 
     <section class="hero">
-        <div style="color: #fff; text-transform: uppercase; letter-spacing: 4px; font-size: 0.8em; margin-bottom: 5px; opacity: 0.8;">КРУПНЕЙШИЙ СОЮЗ СНГ</div>
-        
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
+        <p class="sub-text">Крупнейший союз СНГ</p>
         
-        <p class="sub-text">НАЧИНАЕТСЯ ЗДЕСЬ</p>
-        <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
-        
-        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🔥 ВСТУПИТЬ В КЛУБ</a>
 
         <div class="social-container">
-            <a href="https://wa.me/66917539455" class="social-item wa" target="_blank">
-                <i class="fa-brands fa-whatsapp"></i>
-            </a>
-            <a href="https://vk.ru/ppp_zmz5" class="social-item vk" target="_blank">
+            <a href="https://vk.ru/ppp_zmz5" class="social-item" target="_blank">
                 <i class="fa-brands fa-vk"></i>
             </a>
+            <a href="https://wa.me/message/RSHIXTKJGWR4D1" class="social-item" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
         </div>
-        
+
         <div>
             <img src="card_only.png" class="card-img">
         </div>
+
+        <p class="rb-text">Максимальный рейкбек гарантирован</p>
         
-        <p class="rb-text">САМЫЙ БОЛЬШОЙ РЕЙКБЕК В СОЮЗЕ</p>
+        <br>
+        <a href="https://t.me/kosha101" class="support-btn">
+            <i class="fa-solid fa-headset"></i> Поддержка и жалобы
+        </a>
     </section>
 </body>
 </html>
