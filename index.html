@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP | Покерный Клуб</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { 
             margin: 0; padding: 0; background-color: #000; color: #fff; 
@@ -11,7 +12,7 @@
             text-align: center; overflow-x: hidden; 
         }
 
-        /* 1. СЛОЙ С ФИШКАМИ (НИЖНИЙ) */
+        /* 1. СЛОЙ С ФИШКАМИ */
         .chips-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('ФИШКИ .png') center/cover no-repeat;
@@ -19,7 +20,7 @@
             opacity: 0.5;
         }
 
-        /* 2. СЛОЙ С ДЫМОМ (АНИМАЦИЯ ПОД ТЕКСТОМ) */
+        /* 2. СЛОЙ С ДЫМОМ */
         .smoke-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('green-smoke-spread-black-background.jpg') center/cover no-repeat;
@@ -39,14 +40,11 @@
 
         .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ИСПРАВЛЕННЫЙ 3D ЗАГОЛОВОК */
         h1 { 
             font-size: 4.2em; margin: 10px 0; line-height: 0.95; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             color: #ccff00;
-            text-shadow: 
-                0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
-                0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
+            text-shadow: 0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
         }
 
         .sub-text { font-size: 1.4em; font-weight: bold; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 5px; }
@@ -67,52 +65,41 @@
             100% { background-position: 200% center; }
         }
 
-        /* КНОПКИ СОЦСЕТЕЙ */
+        /* КНОПКИ СОЦСЕТЕЙ (WhatsApp и VK) */
         .social-container {
-            margin-top: 25px;
+            margin-top: 30px;
             display: flex;
             justify-content: center;
-            gap: 20px;
-            position: relative;
-            z-index: 20;
+            gap: 25px;
         }
 
         .social-item {
             text-decoration: none;
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             border: 2px solid #ccff00;
-            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .social-item img {
-            width: 28px;
-            height: 28px;
-            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+            color: #fff;
+            font-size: 24px; /* Размер иконок */
         }
 
         .social-item:hover {
-            transform: scale(1.1) translateY(-5px);
+            transform: scale(1.1);
+            color: #000;
             background: #ccff00;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
+            box-shadow: 0 0 20px #ccff00;
         }
 
-        .social-item:hover img {
-            filter: brightness(0);
-        }
-
-        .social-item.wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 0 30px #25D366; }
-        .social-item.vk:hover { background: #0077FF; border-color: #0077FF; box-shadow: 0 0 30px #0077FF; }
-        .social-item.tg:hover { background: #0088cc; border-color: #0088cc; box-shadow: 0 0 30px #0088cc; }
+        .social-item.wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 0 20px #25D366; color: #fff; }
+        .social-item.vk:hover { background: #0077FF; border-color: #0077FF; box-shadow: 0 0 20px #0077FF; color: #fff; }
 
         .card-img { 
-            width: 85%; max-width: 420px; margin-top: 20px;
+            width: 85%; max-width: 400px; margin-top: 20px;
             mix-blend-mode: screen;
             filter: drop-shadow(0 0 25px rgba(204, 255, 0, 0.5));
             animation: floatCard 6s ease-in-out infinite;
@@ -120,13 +107,10 @@
 
         @keyframes floatCard {
             0%, 100% { transform: translateY(0) rotate(-1deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
         }
 
-        .rb-text { 
-            color: #ccff00; font-weight: bold; margin-top: 40px; font-size: 1.3em; 
-            text-transform: uppercase;
-        }
+        .rb-text { color: #ccff00; font-weight: bold; margin-top: 30px; font-size: 1.2em; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -146,14 +130,11 @@
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
 
         <div class="social-container">
-            <a href="https://wa.me/66917539455" class="social-item wa" target="_blank" title="WhatsApp">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+            <a href="https://wa.me/66917539455" class="social-item wa" target="_blank">
+                <i class="fa-brands fa-whatsapp"></i>
             </a>
-            <a href="https://vk.ru/ppp_zmz5" class="social-item vk" target="_blank" title="VK">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_%282021-present%29.svg" alt="VK">
-            </a>
-            <a href="https://t.me/zamazka_vip_bot" class="social-item tg" target="_blank" title="Telegram Bot">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG">
+            <a href="https://vk.ru/ppp_zmz5" class="social-item vk" target="_blank">
+                <i class="fa-brands fa-vk"></i>
             </a>
         </div>
         
