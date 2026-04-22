@@ -39,12 +39,11 @@
 
         .hero { padding: 40px 20px; position: relative; z-index: 10; }
 
-        /* ИСПРАВЛЕННЫЙ 3D ЗАГОЛОВОК С ПЕРЕНОСОМ */
+        /* ИСПРАВЛЕННЫЙ 3D ЗАГОЛОВОК */
         h1 { 
             font-size: 4.2em; margin: 10px 0; line-height: 0.95; 
             text-transform: uppercase; font-weight: 900; letter-spacing: -2px;
             color: #ccff00;
-            /* Убрали жесткое ограничение ширины, чтобы Safari не обрезал тень */
             text-shadow: 
                 0 1px 0 #88aa00, 0 2px 0 #779900, 0 3px 0 #668800, 
                 0 4px 0 #557700, 0 10px 25px rgba(0,0,0,0.9);
@@ -67,6 +66,50 @@
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
         }
+
+        /* КНОПКИ СОЦСЕТЕЙ */
+        .social-container {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .social-item {
+            text-decoration: none;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ccff00;
+            box-shadow: 0 0 15px rgba(204, 255, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .social-item img {
+            width: 28px;
+            height: 28px;
+            filter: brightness(0) invert(1);
+        }
+
+        .social-item:hover {
+            transform: scale(1.1) translateY(-5px);
+            background: #ccff00;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.8);
+        }
+
+        .social-item:hover img {
+            filter: brightness(0);
+        }
+
+        .social-item.wa:hover { background: #25D366; border-color: #25D366; box-shadow: 0 0 30px #25D366; }
+        .social-item.vk:hover { background: #0077FF; border-color: #0077FF; box-shadow: 0 0 30px #0077FF; }
+        .social-item.tg:hover { background: #0088cc; border-color: #0088cc; box-shadow: 0 0 30px #0088cc; }
 
         .card-img { 
             width: 85%; max-width: 420px; margin-top: 20px;
@@ -101,6 +144,18 @@
         <div class="features">Быстрые выплаты • Моментальные депозиты • Честная игра</div>
         
         <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🚀 ИГРАТЬ В TELEGRAM</a>
+
+        <div class="social-container">
+            <a href="https://wa.me/66917539455" class="social-item wa" target="_blank" title="WhatsApp">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA">
+            </a>
+            <a href="https://vk.ru/ppp_zmz5" class="social-item vk" target="_blank" title="VK">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/VK_Compact_Logo_%282021-present%29.svg" alt="VK">
+            </a>
+            <a href="https://t.me/zamazka_vip_bot" class="social-item tg" target="_blank" title="Telegram Bot">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG">
+            </a>
+        </div>
         
         <div>
             <img src="card_only.png" class="card-img">
