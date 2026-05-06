@@ -19,6 +19,9 @@
     fbq('init', '1596633708112900');
     fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
+    /></noscript>
     <!-- End Meta Pixel Code -->
 
     <style>
@@ -51,14 +54,14 @@
 
         .hero { padding: 20px; position: relative; z-index: 10; }
 
-        /* МЯГКОЕ РАЗМЫТИЕ ГРАНИЦ ЛОГОТИПА */
+        /* ИСПРАВЛЕНО: УЛЬТРА-МЯГКОЕ РАЗМЫТИЕ КРАЕВ ЛОГОТИПА */
         .main-logo {
             width: 90%;
             max-width: 480px;
             margin: 10px 0 25px 0;
-            /* Радиальный градиент: центр непрозрачный, края плавно исчезают */
-            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 90%);
-            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 90%);
+            /* Сужаем маску (40% по горизонтали), чтобы скрыть края файла */
+            -webkit-mask-image: radial-gradient(ellipse 40% 50% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%);
+            mask-image: radial-gradient(ellipse 40% 50% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%);
             filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.1));
         }
 
@@ -145,6 +148,7 @@
     <header><div class="logo-text">VIP</div></header>
 
     <section class="hero">
+        <!-- Логотип с мягкой маской -->
         <img src="pppoker_logo.png.webp" class="main-logo" alt="PPPoker">
         
         <div class="download-wrapper">
@@ -173,6 +177,7 @@
         </div>
 
         <div>
+            <!-- Карта из файла card_only.png -->
             <img src="card_only.png" class="card-img">
         </div>
 
