@@ -53,18 +53,22 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
 
         .hero { padding: 20px; position: relative; z-index: 10; }
 
+        /* РАЗМЫТИЕ ГРАНИЦ ЛОГОТИПА */
         .main-logo {
-            width: 85%;
-            max-width: 450px;
+            width: 90%;
+            max-width: 480px;
             margin: 10px 0 25px 0;
-            filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.4));
+            /* Плавное исчезновение границ */
+            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            filter: drop-shadow(0 0 20px rgba(204, 255, 0, 0.2));
         }
 
         .download-wrapper {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             flex-wrap: wrap;
         }
 
@@ -84,25 +88,27 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             100% { background-position: 200% center; }
         }
 
-        .sub-text-bottom { 
-            font-size: 1.2em; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            margin: 10px 0 20px 0;
-            color: #fff;
-        }
-
+        /* ТЕКСТ: ИНСТРУКЦИЯ ТЕПЕРЬ ВЫШЕ */
         .instruction-text {
-            font-size: 0.85em;
+            font-size: 0.9em;
             color: #fff;
-            margin-bottom: 20px;
-            opacity: 0.9;
+            margin-bottom: 10px;
             font-weight: bold;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .instruction-text span { color: #ccff00; }
+
+        /* СОЮЗ ТЕПЕРЬ НИЖЕ */
+        .sub-text-bottom { 
+            font-size: 1.1em; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin: 0 0 25px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
 
         .social-container {
             margin-bottom: 30px;
@@ -120,7 +126,7 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         .social-item:hover { transform: scale(1.1); color: #000; background: #ccff00; box-shadow: 0 0 20px #ccff00; }
 
         .card-img { 
-            width: 60%; max-width: 280px; margin: 15px 0;
+            width: 65%; max-width: 280px; margin: 15px 0;
             mix-blend-mode: screen; opacity: 0.8;
         }
 
@@ -144,7 +150,6 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
     <header><div class="logo-text">VIP</div></header>
 
     <section class="hero">
-        <!-- Исправленное имя файла логотипа -->
         <img src="pppoker_logo.png.webp" class="main-logo" alt="PPPoker">
         
         <div class="download-wrapper">
@@ -156,9 +161,11 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             </a>
         </div>
 
-        <p class="sub-text-bottom">Крупнейший союз СНГ</p>
-
+        <!-- 1. Напиши нам (выше) -->
         <p class="instruction-text">Напиши нам <span>в мессенджер</span> для вступления</p>
+
+        <!-- 2. Крупнейший союз (ниже) -->
+        <p class="sub-text-bottom">Крупнейший союз СНГ</p>
 
         <div class="social-container">
             <a href="https://vk.ru/ppp_zmz5" class="social-item" target="_blank">
@@ -173,7 +180,6 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         </div>
 
         <div>
-            <!-- Исправленное имя файла карт -->
             <img src="Hero_cards.png" class="card-img">
         </div>
 
