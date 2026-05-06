@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VIP | Покерный Клуб</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1596633708112900');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1596633708112900');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
 
     <style>
         body { 
@@ -53,16 +51,14 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
 
         .hero { padding: 20px; position: relative; z-index: 10; }
 
+        /* МЯГКОЕ РАЗМЫТИЕ ГРАНИЦ ЛОГОТИПА */
         .main-logo {
             width: 90%;
             max-width: 480px;
             margin: 10px 0 25px 0;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
-                                linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%),
-                        linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            -webkit-mask-composite: source-in;
-            mask-composite: intersect;
+            /* Радиальный градиент: центр непрозрачный, края плавно исчезают */
+            -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 90%);
+            mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0) 90%);
             filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.1));
         }
 
@@ -90,7 +86,6 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             100% { background-position: 200% center; }
         }
 
-        /* Крупнейший союз СНГ теперь сразу под кнопками */
         .sub-text-top { 
             font-size: 1.2em; 
             font-weight: bold; 
@@ -100,7 +95,6 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             color: #fff;
         }
 
-        /* Напиши нам в мессенджер теперь ниже */
         .instruction-text {
             font-size: 0.85em;
             color: #fff;
