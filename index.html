@@ -62,16 +62,24 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
 
         .sub-text { font-size: 1.2em; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 
-        /* ГЛАВНАЯ КНОПКА (ТГ БОТ) */
-        .hero-btn { 
+        /* КОНТЕЙНЕР ДЛЯ КНОПОК СКАЧИВАНИЯ */
+        .download-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .download-btn { 
             display: inline-block; 
             background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
             background-size: 200% auto;
-            color: #000; padding: 20px 50px; border-radius: 50px; text-decoration: none; 
-            font-weight: 900; text-transform: uppercase; font-size: 1.2em;
-            box-shadow: 0 0 40px rgba(204, 255, 0, 0.5);
+            color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; 
+            font-weight: 900; text-transform: uppercase; font-size: 0.9em;
+            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
             animation: moveGradient 4s linear infinite;
-            margin-bottom: 35px;
+            min-width: 160px;
         }
 
         @keyframes moveGradient {
@@ -79,23 +87,22 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             100% { background-position: 200% center; }
         }
 
-        /* КНОПКИ ВК И НОВЫЙ ВАТСАП */
+        /* СОЦСЕТИ (3 В РЯД) */
         .social-container {
             margin-bottom: 40px;
-            display: flex; justify-content: center; gap: 25px;
+            display: flex; justify-content: center; gap: 20px;
         }
 
         .social-item {
-            text-decoration: none; width: 60px; height: 60px;
+            text-decoration: none; width: 55px; height: 55px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; background: rgba(255, 255, 255, 0.05);
             border: 1px solid #ccff00; transition: all 0.3s ease;
-            color: #ccff00; font-size: 28px;
+            color: #ccff00; font-size: 24px;
         }
 
         .social-item:hover { transform: scale(1.1); color: #000; background: #ccff00; box-shadow: 0 0 20px #ccff00; }
 
-        /* ПОДДЕРЖКА / ЖАЛОБЫ */
         .support-btn {
             display: inline-block;
             background: transparent;
@@ -127,14 +134,22 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
         <p class="sub-text">Крупнейший союз СНГ</p>
         
-        <a href="https://t.me/zamazka_vip_bot" class="hero-btn">🔥 ВСТУПИТЬ В КЛУБ</a>
+        <!-- ДВЕ КНОПКИ СКАЧИВАНИЯ -->
+        <div class="download-wrapper">
+            <a href="#" class="download-btn"><i class="fa-brands fa-apple"></i> Скачать iOS</a>
+            <a href="#" class="download-btn"><i class="fa-brands fa-android"></i> Скачать Android</a>
+        </div>
 
+        <!-- ТРИ КНОПКИ СОЦСЕТЕЙ -->
         <div class="social-container">
             <a href="https://vk.ru/ppp_zmz5" class="social-item" target="_blank">
                 <i class="fa-brands fa-vk"></i>
             </a>
             <a href="https://wa.me/message/PP2SIOH74T3ZH1" class="social-item" target="_blank">
                 <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/zamazka_vip_bot" class="social-item" target="_blank">
+                <i class="fa-brands fa-telegram"></i>
             </a>
         </div>
 
