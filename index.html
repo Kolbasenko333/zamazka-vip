@@ -54,14 +54,14 @@
 
         .hero { padding: 20px; position: relative; z-index: 10; }
 
-        /* ИСПРАВЛЕНО: УЛЬТРА-МЯГКОЕ РАЗМЫТИЕ КРАЕВ ЛОГОТИПА */
+        /* ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ ГРАНИЦ ЛОГОТИПА */
         .main-logo {
             width: 90%;
             max-width: 480px;
             margin: 10px 0 25px 0;
-            /* Сужаем маску (40% по горизонтали), чтобы скрыть края файла */
-            -webkit-mask-image: radial-gradient(ellipse 40% 50% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%);
-            mask-image: radial-gradient(ellipse 40% 50% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0) 80%);
+            /* Радиальная маска жестко обрезает края картинки, делая их прозрачными */
+            -webkit-mask-image: radial-gradient(ellipse 50% 45% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 85%);
+            mask-image: radial-gradient(ellipse 50% 45% at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0) 85%);
             filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.1));
         }
 
@@ -148,7 +148,6 @@
     <header><div class="logo-text">VIP</div></header>
 
     <section class="hero">
-        <!-- Логотип с мягкой маской -->
         <img src="pppoker_logo.png.webp" class="main-logo" alt="PPPoker">
         
         <div class="download-wrapper">
@@ -177,7 +176,6 @@
         </div>
 
         <div>
-            <!-- Карта из файла card_only.png -->
             <img src="card_only.png" class="card-img">
         </div>
 
