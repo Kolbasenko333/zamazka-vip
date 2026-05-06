@@ -49,24 +49,23 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         }
 
         header { padding: 15px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); }
-        .logo { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; }
+        .logo-text { font-size: 1.5em; font-weight: bold; color: #ccff00; letter-spacing: 5px; }
 
-        .hero { padding: 30px 20px; position: relative; z-index: 10; }
+        .hero { padding: 20px; position: relative; z-index: 10; }
 
-        h1 { 
-            font-size: 3.5em; margin: 5px 0; line-height: 0.95; 
-            text-transform: uppercase; font-weight: 900;
-            color: #ccff00;
-            text-shadow: 0 10px 25px rgba(0,0,0,0.9);
+        /* КАРТИНКА ВМЕСТО ЗАГОЛОВКА */
+        .main-logo {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px 0 20px 0;
+            filter: drop-shadow(0 0 20px rgba(204, 255, 0, 0.3));
         }
-
-        .sub-text { font-size: 1.2em; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
 
         .download-wrapper {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
         }
 
@@ -74,8 +73,8 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             display: inline-block; 
             background: linear-gradient(90deg, #ccff00, #00FF7F, #ccff00);
             background-size: 200% auto;
-            color: #000; padding: 15px 30px; border-radius: 50px; text-decoration: none; 
-            font-weight: 900; text-transform: uppercase; font-size: 0.9em;
+            color: #000; padding: 15px 25px; border-radius: 50px; text-decoration: none; 
+            font-weight: 900; text-transform: uppercase; font-size: 0.85em;
             box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
             animation: moveGradient 4s linear infinite;
             min-width: 160px;
@@ -86,66 +85,69 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             100% { background-position: 200% center; }
         }
 
-        /* ПОДСКАЗКА ПОСЛЕ СКАЧИВАНИЯ */
+        /* ТЕКСТ ПОД КНОПКАМИ */
+        .sub-text-bottom { 
+            font-size: 1.1em; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
         .instruction-text {
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: #fff;
             margin-bottom: 20px;
-            opacity: 0.9;
+            opacity: 0.8;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .instruction-text span {
-            color: #ccff00;
-        }
+        .instruction-text span { color: #ccff00; }
 
         .social-container {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             display: flex; justify-content: center; gap: 20px;
         }
 
         .social-item {
-            text-decoration: none; width: 55px; height: 55px;
+            text-decoration: none; width: 50px; height: 50px;
             display: flex; align-items: center; justify-content: center;
             border-radius: 50%; background: rgba(255, 255, 255, 0.05);
             border: 1px solid #ccff00; transition: all 0.3s ease;
-            color: #ccff00; font-size: 24px;
+            color: #ccff00; font-size: 22px;
         }
 
         .social-item:hover { transform: scale(1.1); color: #000; background: #ccff00; box-shadow: 0 0 20px #ccff00; }
+
+        .card-img { 
+            width: 60%; max-width: 250px; margin: 15px 0;
+            mix-blend-mode: screen; opacity: 0.8;
+        }
+
+        .rb-text { color: #ccff00; font-weight: bold; font-size: 0.9em; text-transform: uppercase; margin-top: 10px; }
 
         .support-btn {
             display: inline-block;
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff; padding: 12px 30px; border-radius: 5px;
-            text-decoration: none; font-size: 0.85em; font-weight: bold;
+            color: #fff; padding: 10px 25px; border-radius: 5px;
+            text-decoration: none; font-size: 0.8em; font-weight: bold;
             text-transform: uppercase; transition: all 0.3s;
-            margin-top: 20px;
-            opacity: 0.7;
+            margin-top: 15px; opacity: 0.6;
         }
-
-        .support-btn:hover { border-color: #ff4444; color: #ff4444; opacity: 1; }
-
-        .card-img { 
-            width: 70%; max-width: 300px; margin: 20px 0;
-            mix-blend-mode: screen; opacity: 0.8;
-        }
-
-        .rb-text { color: #ccff00; font-weight: bold; font-size: 1em; text-transform: uppercase; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div class="chips-bg"></div>
     <div class="smoke-bg"></div>
 
-    <header><div class="logo">VIP</div></header>
+    <header><div class="logo-text">VIP</div></header>
 
     <section class="hero">
-        <h1>ТВОЙ ПУТЬ <br> К ПОБЕДЕ</h1>
-        <p class="sub-text">Крупнейший союз СНГ</p>
+        <!-- КАРТИНКА ЛОГОТИПА -->
+        <img src="pppoker_logo.png" class="main-logo" alt="PPPoker">
         
         <div class="download-wrapper">
             <a href="https://apps.apple.com/ru/app/pppoker-nlh-plo-ofc/id1101622978" class="download-btn" target="_blank">
@@ -156,8 +158,10 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             </a>
         </div>
 
-        <!-- ТЕКСТ-ИНСТРУКЦИЯ -->
-        <p class="instruction-text">Скачай приложение и напиши нам <span>в любой мессенджер</span> для вступления</p>
+        <!-- КРУПНЕЙШИЙ СОЮЗ ПОД КНОПКАМИ -->
+        <p class="sub-text-bottom">Крупнейший союз СНГ</p>
+
+        <p class="instruction-text">Напиши нам <span>в мессенджер</span> для вступления</p>
 
         <div class="social-container">
             <a href="https://vk.ru/ppp_zmz5" class="social-item" target="_blank">
