@@ -53,19 +53,19 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
 
         .hero { padding: 20px; position: relative; z-index: 10; }
 
-        /* КАРТИНКА ВМЕСТО ЗАГОЛОВКА */
+        /* ЛОГОТИП ИЗ ФАЙЛА i.webp */
         .main-logo {
-            width: 90%;
-            max-width: 500px;
-            margin: 10px 0 20px 0;
-            filter: drop-shadow(0 0 20px rgba(204, 255, 0, 0.3));
+            width: 85%;
+            max-width: 450px;
+            margin: 10px 0 25px 0;
+            filter: drop-shadow(0 0 15px rgba(204, 255, 0, 0.4));
         }
 
         .download-wrapper {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
@@ -75,9 +75,9 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             background-size: 200% auto;
             color: #000; padding: 15px 25px; border-radius: 50px; text-decoration: none; 
             font-weight: 900; text-transform: uppercase; font-size: 0.85em;
-            box-shadow: 0 0 30px rgba(204, 255, 0, 0.4);
+            box-shadow: 0 0 25px rgba(204, 255, 0, 0.4);
             animation: moveGradient 4s linear infinite;
-            min-width: 160px;
+            min-width: 165px;
         }
 
         @keyframes moveGradient {
@@ -85,21 +85,21 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             100% { background-position: 200% center; }
         }
 
-        /* ТЕКСТ ПОД КНОПКАМИ */
         .sub-text-bottom { 
-            font-size: 1.1em; 
+            font-size: 1.2em; 
             font-weight: bold; 
             text-transform: uppercase; 
             letter-spacing: 2px; 
-            margin-bottom: 20px;
+            margin: 10px 0 20px 0;
             color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .instruction-text {
             font-size: 0.85em;
             color: #fff;
             margin-bottom: 20px;
-            opacity: 0.8;
+            opacity: 0.9;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -122,7 +122,7 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         .social-item:hover { transform: scale(1.1); color: #000; background: #ccff00; box-shadow: 0 0 20px #ccff00; }
 
         .card-img { 
-            width: 60%; max-width: 250px; margin: 15px 0;
+            width: 60%; max-width: 280px; margin: 15px 0;
             mix-blend-mode: screen; opacity: 0.8;
         }
 
@@ -135,7 +135,7 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             color: #fff; padding: 10px 25px; border-radius: 5px;
             text-decoration: none; font-size: 0.8em; font-weight: bold;
             text-transform: uppercase; transition: all 0.3s;
-            margin-top: 15px; opacity: 0.6;
+            margin-top: 15px; opacity: 0.7;
         }
     </style>
 </head>
@@ -146,8 +146,8 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
     <header><div class="logo-text">VIP</div></header>
 
     <section class="hero">
-        <!-- КАРТИНКА ЛОГОТИПА -->
-        <img src="pppoker_logo.png" class="main-logo" alt="PPPoker">
+        <!-- ТУТ ИСПРАВИЛ ПУТЬ К КАРТИНКЕ НА i.webp -->
+        <img src="i.webp" class="main-logo" alt="PPPoker">
         
         <div class="download-wrapper">
             <a href="https://apps.apple.com/ru/app/pppoker-nlh-plo-ofc/id1101622978" class="download-btn" target="_blank">
@@ -158,7 +158,6 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             </a>
         </div>
 
-        <!-- КРУПНЕЙШИЙ СОЮЗ ПОД КНОПКАМИ -->
         <p class="sub-text-bottom">Крупнейший союз СНГ</p>
 
         <p class="instruction-text">Напиши нам <span>в мессенджер</span> для вступления</p>
