@@ -66,7 +66,7 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             flex-wrap: wrap;
         }
 
@@ -84,6 +84,21 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
         @keyframes moveGradient {
             0% { background-position: 0% center; }
             100% { background-position: 200% center; }
+        }
+
+        /* ПОДСКАЗКА ПОСЛЕ СКАЧИВАНИЯ */
+        .instruction-text {
+            font-size: 0.9em;
+            color: #fff;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .instruction-text span {
+            color: #ccff00;
         }
 
         .social-container {
@@ -140,6 +155,9 @@ src="https://www.facebook.com/tr?id=1596633708112900&ev=PageView&noscript=1"
                 <i class="fa-brands fa-android"></i> Скачать Android
             </a>
         </div>
+
+        <!-- ТЕКСТ-ИНСТРУКЦИЯ -->
+        <p class="instruction-text">Скачай приложение и напиши нам <span>в любой мессенджер</span> для вступления</p>
 
         <div class="social-container">
             <a href="https://vk.ru/ppp_zmz5" class="social-item" target="_blank">
